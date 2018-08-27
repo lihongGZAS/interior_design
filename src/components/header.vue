@@ -1,7 +1,8 @@
 <template>
   <div class="header-module">
     <div class="logoImg">
-      <img src="../assets/logo.png">
+      <!-- src="../assets/logo.png" -->
+      <img src="{{}}"  alt="这里是导航栏logo">
     </div>
     <div class="menu-list">
       <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#0a60b9" text-color="#fff"
@@ -46,6 +47,7 @@ export default {
   .logoImg {
     width: 160px;
     height: 80px;
+    border: 1px solid #fff;
     position: absolute;
     left: 80px;
   }

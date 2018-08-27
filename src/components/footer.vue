@@ -3,7 +3,7 @@
     <div class="company-desc">
       <div class="company-desc-left">
         <div class="company-logo">
-          <img src="../assets/logo.png">
+          <img src="{{}}" alt="这里是底部logo">
         </div>
         <div class="company-introduce">
           <p>{{company_desc}}</p>
@@ -30,27 +30,26 @@
 </template>
 
 <script>
-export default {
-  name: 'footerDiv',
-  data() {
-    return {
-      company_desc: '简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍',
-      company_address: '浙江省台州市XXX镇XXX街XX号',
-      company_qrcode: '../../static/QR_code.jpg', // 模拟请求到的图片地址,动态配置的本地图片只能放在static文件夹下，
-      tel_phoneNumber: 88888888
+  export default {
+    name: 'footerDiv',
+    data() {
+      return {
+        company_desc: '简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍',
+        company_address: '浙江省台州市XXX镇XXX街XX号',
+        company_qrcode: '../../static/QR_code.jpg', // 模拟请求到的图片地址,动态配置的本地图片只能放在static文件夹下，
+        tel_phoneNumber: 88888888
+      }
     }
   }
-}
 </script>
 
 <style>
   .footer-box {
     width: 100%;
-    height: 300px;
   }
   .company-desc {
     background: #0a60b9;
-    height: 100%;
+    height: 300px;
     position: relative;
   }
   .company-desc-left {
@@ -62,6 +61,7 @@ export default {
   .company-logo {
     width: 140px;
     height: 60px;
+    border: 1px solid #fff;
   }
   .company-logo img {
     width: 100%;
