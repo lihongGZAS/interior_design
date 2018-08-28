@@ -122,7 +122,6 @@
           </div>
           <div class="container-content-rt1">
             <h2>{{seriesName}}</h2>
-            <span>简要介绍</span>
             <div class="cat-line container-content-rtline"></div>
             <p>{{seriesIntroduce}}</p>
           </div>
@@ -168,9 +167,61 @@
           <span>英文</span>
         </div>
         <div class="container-content trademark">
-
+          <div class="trademark-info">
+            <div class="trademark-info-list" v-for="(item,$index) in trademarkInfo" :key="$index">
+              <img src="../assets/images/test.png" alt="">
+              <h2>{{item.title}}</h2>
+              <span>{{item.desc}}</span>
+            </div>
+          </div>
         </div>
-      </div>    
+      </div>  
+      <div class="home-container-list">
+        <div class="container-title">
+          <h3>——  新闻资讯  ——</h3>
+          <span>news</span>
+        </div>
+        <div class="container-content">
+          <div class="company-news">
+            <div class="make-an-appiontment">
+              <div class="appiontment-lt">
+                <span>立即预约</span>
+              </div>
+              <div class="appiontment-rt">
+                <img src="../assets/images/open.png" alt="">
+              </div>
+            </div>
+            <div class="compay-new-list">
+
+            </div>
+            <div class="news-menu">
+              <el-row class="tac">
+                <el-col :span="12">
+                  <el-menu default-active="2" class="el-menu-vertical-demo">
+                    <el-menu-item index="1">
+                      <template slot="title">
+                        <span>顶部</span>
+                      </template>
+                    </el-menu-item>
+                    <el-menu-item index="2">
+                      <span slot="title">预约</span>
+                    </el-menu-item>
+                    <el-menu-item index="3">
+                      <span slot="title">热线</span>
+                    </el-menu-item>
+                    <el-menu-item index="4">
+                      <span slot="title">手机端</span>
+                    </el-menu-item>
+                  </el-menu>
+                </el-col>
+              </el-row>  
+            </div>
+          </div>
+          <div class="btn-more">
+            <el-button>更多</el-button>
+          </div>
+        </div>
+      </div>  
     </div>
   </div>
 </template>
@@ -186,6 +237,12 @@ export default {
         { url: "../../static/3.jpg", id: 3 },
         { url: "../../static/4.jpg", id: 4 },
         { url: "../../static/5.jpg", id: 5 }
+      ],
+      trademarkInfo: [
+        {title: '设计力', desc: 'disign'},
+        {title: '生产力', desc: 'product'},
+        {title: '服务', desc: 'service'},
+        {title: '保障', desc: 'hello world4'}
       ],
       containCL: '../../static/1.jpg',
       seriesBG: '../../static/1.jpg',

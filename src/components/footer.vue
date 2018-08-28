@@ -22,7 +22,10 @@
     </div>
     <div class="menu-text">
       <div class="footer-menu">
-        
+        <span>首页</span>
+        <span>全屋定制</span>
+        <span>产品</span>
+        <span>品牌实力</span>
       </div>
       <div class="copyright">版权说明:Copyright [dates] by [author/owner]</div>
     </div>
@@ -43,72 +46,8 @@
   }
 </script>
 
-<style>
-  .footer-box {
-    width: 100%;
-  }
-  .company-desc {
-    background: #0a60b9;
-    height: 300px;
-    position: relative;
-  }
-  .company-desc-left {
-    width: 30%;
-    position: absolute;
-    left: 150px;
-    top: 60px;
-  }
-  .company-logo {
-    width: 140px;
-    height: 60px;
-    border: 1px solid #fff;
-  }
-  .company-logo img {
-    width: 100%;
-    height: 100%;
-  }
-  .company-introduce {
-    text-align: left;
-    color: #fff;
-  }
-  .company-address {
-    color: #fff;
-    text-align: left;
-    font-size: 18px;
-    font-weight: bolder;
-  }
-  .company-desc-right {
-    width: 220px;
-    height: 180px;
-    position: absolute;
-    top: 60px;
-    right: 150px;
-  }
-  .company-qrcode {
-    width: 150px;
-    height: 150px;
-  }
-  .company-qrcode img {
-    width: 100%;
-    height: 100%;
-  }
-  .tel-phoneNumber {
-    text-align: left;
-    color: #fff;
-    margin-top: 6px;
-    font-size: 18px;
-  }
-  .menu-text {
-    width: 100%;
-    height: 70px;
-    line-height: 70px;
-    border: 1px solid red;
-    position: relative;
-  }
-  .copyright {
-    position: absolute;
-    right: 150px;
-  }
+<style scoped>
+  @import '../../static/css/footer.css';
 </style>
 
 

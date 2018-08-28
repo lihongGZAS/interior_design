@@ -138,12 +138,19 @@
   background: #585857;
   z-index: 10;
   opacity: 0.85;
+  text-align: center;
   display: table-cell;
   vertical-align: middle;
-  text-align: left;
+  padding: 80px 10px;
+}
+.container-content-rt1 h2 {
+  font-size: 24px;
 }
 .container-content-rtline {
+  width: 96%;
   color: #fff;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 /* 产品 */
@@ -210,4 +217,75 @@
 .trademark {
   background: #0a60b9;
   height: 500px;
+  position: relative;
+  border: 1px solid yellow;
+}
+.trademark-info {
+  width: 80%;
+  height: 300px;
+  border: 1px solid red;
+  position: absolute;
+  display: table;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+}
+.trademark-info-list {
+  width: 25%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+.trademark-info-list span {
+  vertical-align: middle;
+}
+
+/* news */
+.company-news {
+  width: 100%;
+  position: relative;
+}
+.make-an-appiontment {
+  position: absolute;
+  display: table;
+  vertical-align: middle;
+  left: 0px;
+  bottom: 30px;
+}
+.appiontment-lt {
+  width: 30px;
+  height: 160px;
+  background: #0a60b9;
+  color: #fff;
+  display: table-cell;
+  vertical-align: middle;
+}
+.appiontment-rt {
+  display: table-cell;
+  background: #66c;
+  vertical-align: middle;
+}
+.compay-new-list {
+  width: 80%;
+  height: 400px;
+  margin: 0 auto;
+  border: 1px solid blue;
+  display: table;
+  vertical-align: middle;
+}
+.news-menu {
+  width: 100px;
+  height: 260px;
+  position: absolute;
+  right: 0px;
+  bottom: 14px;
+  border: 1px solid #666;
+}
+.news-menu .el-row {
+  height: 260px;
+}
+.news-menu .el-col-12 ul li {
+  height: 25%;
+  line-height: 65px;
 }

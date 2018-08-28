@@ -1,0 +1,82 @@
+.footer-box {
+  width: 100%;
+  margin-top: 10px;
+}
+.company-desc {
+  background: #0a60b9;
+  height: 300px;
+  position: relative;
+}
+.company-desc-left {
+  width: 30%;
+  position: absolute;
+  left: 150px;
+  top: 60px;
+}
+.company-logo {
+  width: 140px;
+  height: 60px;
+  border: 1px solid #fff;
+}
+.company-logo img {
+  width: 100%;
+  height: 100%;
+}
+.company-introduce {
+  text-align: left;
+  color: #fff;
+}
+.company-address {
+  color: #fff;
+  text-align: left;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.company-desc-right {
+  width: 220px;
+  height: 180px;
+  position: absolute;
+  top: 60px;
+  right: 150px;
+}
+.company-qrcode {
+  width: 150px;
+  height: 150px;
+}
+.company-qrcode img {
+  width: 100%;
+  height: 100%;
+}
+.tel-phoneNumber {
+  text-align: left;
+  color: #fff;
+  margin-top: 6px;
+  font-size: 18px;
+}
+.menu-text {
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  border: 1px solid red;
+  position: relative;
+}
+.footer-menu {
+  width: 50%;
+  height: 70px;
+  padding: 0;
+  line-height: 70px;
+  border: 1px solid blue;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.footer-menu span {
+  width: 24%;
+  text-align: center;
+  display: inline-block;
+  padding: 0;
+}
+.copyright {
+  position: absolute;
+  right: 150px;
+}
