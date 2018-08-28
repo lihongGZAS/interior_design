@@ -1,111 +1,181 @@
 <template>
   <div class="home-div">
-      <!-- <el-carousel :interval="5000" arrow="always">
-        <el-carousel-item v-for="item in lunboUrls" :key="item.id">
-          
-          <img :src="item.url" alt="">
-        </el-carousel-item>
-      </el-carousel> -->
-     
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide slide1">
-              <img class="swiper-container-img" :src="lunboUrls[0].url" alt="">
-            </div>
-            <div class="swiper-slide slide2">
-              <img class="swiper-container-img" :src="lunboUrls[1].url" alt="">
-            </div>
-            <div class="swiper-slide slide3">
-              <img class="swiper-container-img" :src="lunboUrls[2].url" alt="">
-            </div>
-            <div class="swiper-slide slide4">
-              <img class="swiper-container-img" :src="lunboUrls[3].url" alt="">
-            </div>
-            <div class="swiper-slide slide5">
-              <img class="swiper-container-img" :src="lunboUrls[4].url" alt="">
-            </div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide slide1" v-for="item in lunboUrls" :key="item.id">
+          <img class="swiper-container-img" :src="item.url" alt="">
         </div>
-        <div class="pagination"></div>
-        <div class="cover"></div>
-    
-        <div class="home-events">
-            <div class="home-events-box" style="min-height:30px;">
-                <div class="home-events-box-wrapper" style="min-height:30px;">
-                    <div class="home-events-box-item">
-                        <a href="#" target="_blank">
-                            <i>
-                                <img src="../assets/images/events-icon6.png" alt="免费体验专区">
-                                <img src="../assets/images/events-icon6-active.png" alt="免费体验专区">
-                            </i>
-                            <h2>预约尺寸</h2>
-                            <p class="js-title" title="">预约尺寸111</p>
-                        </a>
-                    </div>
-    
-                    <div class="home-events-box-item">
-                        <a href="#" target="_blank">
-                            <i>
-                                <img src="../assets/images/events-icon1.png" alt="特惠专区">
-                                <img src="../assets/images/events-icon1-active.png" alt="特惠专区">
-                            </i>
-                            <h2>上门测量</h2>
-                            <p class="js-title" title="">上门测量111</p>
-                        </a>
-                    </div>
-    
-                    <div class="home-events-box-item">
-                        <a href="#" target="_blank">
-                            <i>
-                                <img src="../assets/images/events-icon2.png" alt="严选商城">
-                                <img src="../assets/images/events-icon2-active.png" alt="严选商城">
-                            </i>
-                            <h2>专业设计</h2>
-                            <p class="js-title" title="">专业设计111</p>
-                        </a>
-                    </div>
-    
-                    <div class="home-events-box-item">
-                        <a href="#" target="_blank">
-                            <i>
-                                <img src="../assets/images/events-icon9.png" alt="5分钟快速入门">
-                                <img src="../assets/images/events-icon9-active.png" alt="5分钟快速入门">
-                            </i>
-                            <h2>配送安装</h2>
-                            <p class="js-title" title="">配送安装111</p>
-                        </a>
-                    </div>
-                    <div class="home-events-box-item">
-                        <a href="#" target="_blank">
-                            <i>
-                                <img src="../assets/images/events-icon9.png" alt="5分钟快速入门">
-                                <img src="../assets/images/events-icon9-active.png" alt="5分钟快速入门">
-                            </i>
-                            <h2>售后无忧</h2>
-                            <p class="js-title" title="">售后无忧111</p>
-                        </a>
-                    </div>
-                </div>
+      </div>
+      <div class="pagination"></div>
+      <div class="cover"></div>
+      <div class="home-events">
+        <div class="home-events-box" style="min-height:30px;">
+          <div class="home-events-box-wrapper" style="min-height:30px;">
+            <div class="home-events-box-item">
+              <a href="#" target="_blank">
+                <i>
+                  <img src="../assets/images/events-icon6.png" alt="">
+                  <img src="../assets/images/events-icon6-active.png" alt="">
+                </i>
+                <h2>预约尺寸</h2>
+                <p class="js-title" title="">预约尺寸111</p>
+              </a>
             </div>
+            <div class="home-events-box-item">
+              <a href="#" target="_blank">
+                <i>
+                  <img src="../assets/images/events-icon1.png" alt="">
+                  <img src="../assets/images/events-icon1-active.png" alt="">
+                </i>
+                <h2>上门测量</h2>
+                <p class="js-title" title="">上门测量111</p>
+              </a>
+            </div>
+            <div class="home-events-box-item">
+              <a href="#" target="_blank">
+                <i>
+                  <img src="../assets/images/events-icon2.png" alt="">
+                  <img src="../assets/images/events-icon2-active.png" alt="">
+                </i>
+                <h2>专业设计</h2>
+                <p class="js-title" title="">专业设计111</p>
+              </a>
+            </div>
+            <div class="home-events-box-item">
+              <a href="#" target="_blank">
+                <i>
+                  <img src="../assets/images/events-icon9.png" alt="">
+                  <img src="../assets/images/events-icon9-active.png" alt="">
+                </i>
+                <h2>配送安装</h2>
+                <p class="js-title" title="">配送安装111</p>
+              </a>
+            </div>
+            <div class="home-events-box-item">
+              <a href="#" target="_blank">
+                <i>
+                  <img src="../assets/images/events-icon9.png" alt="">
+                  <img src="../assets/images/events-icon9-active.png" alt="">
+                </i>
+                <h2>售后无忧</h2>
+                <p class="js-title" title="">售后无忧111</p>
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <div class="home-container">
       <div class="home-container-list">
         <div class="container-title">
-          <span>—— 企业介绍 ——</span><br>
+          <h3>——  企业介绍  ——</h3>
           <span>英文</span>
         </div>
         <div class="container-content">
-
+          <div class="container-content-lt">
+            <img :src="containCL" alt="">
+          </div>
+          <div class="container-content-rt">
+            <span class="company-introduce-text">企业英文介绍</span>
+            <h2>企业名</h2>
+            <span class="company-slogan">企业标语</span>
+            <div class="cat-line"></div>
+            <span class="keyword">关键字</span>
+            <span class="keyword">关键字</span>
+            <p class="company-introduce-detail">企业介绍详情：{{company_detail}}</p>
+          </div>
         </div>
       </div>
+      <div class="home-container-list">
+        <div class="container-title">
+          <h3>——  全屋定制  ——</h3>
+          <span>英文</span>
+        </div>
+        <div class="container-content">
+          <div class="container-content-lt1">
+            <el-row class="tac">
+              <el-col :span="12">
+                <el-menu default-active="1" class="el-menu-vertical-demo">
+                  <el-menu-item index="1">
+                    <template slot="title">
+                      <span>系列一</span>
+                    </template>
+                  </el-menu-item>
+                  <el-menu-item index="2">
+                    <span slot="title">系列二</span>
+                  </el-menu-item>
+                  <el-menu-item index="3">
+                    <span slot="title">系列三</span>
+                  </el-menu-item>
+                  <el-menu-item index="4">
+                    <span slot="title">系列四</span>
+                  </el-menu-item>
+                  <el-menu-item index="5">
+                    <span slot="title">更多</span>
+                  </el-menu-item>
+                </el-menu>
+              </el-col>
+            </el-row>  
+          </div>
+          <div class="container-content-ct1">
+            <img :src="seriesBG" alt="">
+          </div>
+          <div class="container-content-rt1">
+            <h2>{{seriesName}}</h2>
+            <span>简要介绍</span>
+            <div class="cat-line container-content-rtline"></div>
+            <p>{{seriesIntroduce}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="home-container-list">
+        <div class="container-title">
+          <h3>——  产品  ——</h3>
+          <span>英文</span>
+        </div>
+        <div class="container-content">
+          <div class="goods-show-list">
+            <div class="goods-names-picture" v-for="$index in 5" :key="$index">
+              <div class="goods-picture">
+                <!-- <img :src="containCL" alt="找不到图片"> -->
+              </div>
+              <span>说明{{$index}}</span>
+            </div>
+          </div>
+          <div class="style-list">
+            <div class="style-list-intro">
+              <el-row class="series-style-list">
+                <el-col :span='7' v-for="$index in 6" :key="$index">
+                  <el-card :body-style="{ padding: '10px' }">
+                    <img :src="containCL" class="image">
+                    <div style="padding: 14px;">
+                      <span style="font-size: 20px;color:#333;">橱柜名</span><br>
+                      <span class="series-list-name">橱柜风格</span>
+                    </div>
+                  </el-card>
+                </el-col>
+              </el-row>
+            </div>
+          </div>
+          <div class="btn-more">
+            <el-button>更多</el-button>
+          </div>
+        </div>
+      </div>
+      <div class="home-container-list">
+        <div class="container-title">
+          <h3>——  品牌实力  ——</h3>
+          <span>英文</span>
+        </div>
+        <div class="container-content trademark">
+
+        </div>
+      </div>    
     </div>
   </div>
 </template>
 
-
 <script>
-// import Swiper from "../assets/js/swiper.min.js";
-
 export default {
   name: "home",
   data() {
@@ -117,10 +187,15 @@ export default {
         { url: "../../static/4.jpg", id: 4 },
         { url: "../../static/5.jpg", id: 5 }
       ],
-      test1: '../../static/1.jpg'
+      containCL: '../../static/1.jpg',
+      seriesBG: '../../static/1.jpg',
+      seriesName: '系列名',
+      seriesIntroduce: '系列介绍',
+      company_detail: 'hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666'
     };
   },
   mounted: function() {
+      // 轮播插件初始化
       var mySwiper = new Swiper(".swiper-container", {
       pagination: ".pagination",
       paginationClickable: true,
@@ -140,37 +215,7 @@ export default {
  };
 </script>
 
-<style>
-/* @import '/static/css/swiper.css';
-@import '/static/css/animate.min.css';
-@import '/static/css/style.css'; */
-.swiper-container {
-  margin-top: -1px;
-}
-.swiper-slide {
-  opacity: 1;
-  overflow: hidden;
-}
-.swiper-container-img {
-  width: 100%;
-  height: 500px;
-}
-.swiper-box {
-  width: 100%;
-  height: 520px;
-}
-.el-carousel__item img {
-  width: 100%;
-  height: 100%;
-  opacity: 0.75;
-  margin: 0;
-}
-.home-events-box-item {
-  width: 20%;
-}
-.container-title {
-  height: 200px;
-  line-height: 200px;
-}
+<style scoped>
+  @import '../../static/css/home.css'
 </style>
 

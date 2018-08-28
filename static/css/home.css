@@ -1,0 +1,213 @@
+.swiper-container {
+  margin-top: -1px;
+}
+.swiper-slide {
+  opacity: 1;
+  overflow: hidden;
+}
+.swiper-container-img {
+  width: 100%;
+  height: 500px;
+}
+.swiper-box {
+  width: 100%;
+  height: 520px;
+}
+.el-carousel__item img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  margin: 0;
+}
+.home-events-box-item {
+  width: 20%;
+}
+.home-container {
+  margin-top: 120px;
+}
+.container-title {
+  width: 100%;
+  width: 1920px;
+  height: 90px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.container-title span {
+  vertical-align: middle;
+}
+.container-content {
+  width: 100%;
+  display: table;
+  position: relative;
+}
+.container-content-lt {
+  width: 50%;
+  height: 500px;
+  display: table-cell;
+}
+.container-content-lt img{
+  width: 100%;
+  height: 100%;
+}
+.container-content-rt {
+  width: 50%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  padding: 40px;
+}
+.container-content-rt span {
+  display: block;
+  margin: 20px 0px;
+  color: #333;
+}
+.container-content-rt h2 {
+  color: #333;
+  font-size: 30px;
+  font-weight: bolder;
+}
+.container-content-rt .company-slogan {
+  font-size: 18px;
+  color: #666;
+}
+.cat-line {
+  width: 80px;
+  height: 1px;
+  border: 1px solid #888;
+  box-sizing: border-box;
+}
+.company-introduce-text {
+  font-size: 20px;
+  font-weight: bolder;
+}
+.container-content-rt .keyword {
+  font-size: 28px;
+}
+.container-content-rt .company-introduce-detail {
+  font-size: 14px;
+  color: #666;
+}
+.container-content-lt1 {
+  width: 16%;
+  height: 500px;
+  overflow: hidden;
+  display: table-cell;
+}
+.el-menu-item {
+  font-size: 16px;
+  height: 20%;
+  border-bottom: 2px solid #666;
+}
+.el-row {
+  height: 500px;
+}
+.el-col-12 {
+  width: 100%;
+  height: 100%;
+}
+.el-col-12 ul {
+  height: 100%;
+}
+.el-col-12 ul li {
+  height: 20%;
+  line-height: 100px;
+}
+.el-menu-item.is-active {
+  font-size: 20px;
+  color: #fff;
+  background: #0a60b9;
+}
+.container-content-ct1 {
+  width: 84%;
+  height: 500px;
+  display: table-cell;
+}
+.container-content-ct1 img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.container-content-rt1 {
+  width: 16%;
+  height: 100%;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  background: #585857;
+  z-index: 10;
+  opacity: 0.85;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+}
+.container-content-rtline {
+  color: #fff;
+}
+
+/* 产品 */
+.goods-show-list {
+  overflow: hidden;
+  display: inline-block;
+}
+.goods-names-picture {
+  float: left;
+  margin: 10px 20px;
+}
+.goods-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #999;
+}
+.goods-picture img {
+  width: 100%;
+  height: 100%;
+}
+.image {
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both
+}
+.series-list-name {
+  font-size: 16px;
+  color: #666;
+}
+.style-list {
+  width: 100%;
+}
+.style-list-intro {
+  width: 60%;
+  margin: 0 auto;
+}
+.el-col-7 {
+  margin: 10px 16px;
+}
+.series-style-list {
+  height: auto;
+}
+.btn-more {
+  padding: 30px 0px;
+}
+.btn-more button {
+  width: 240px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+/* 品牌实力样式 */
+.trademark {
+  background: #0a60b9;
+  height: 500px;
+}
