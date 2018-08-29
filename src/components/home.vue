@@ -176,7 +176,7 @@
           </div>
         </div>
       </div>  
-      <div class="home-container-list">
+      <div class="home-container-list news-list-div">
         <div class="container-title">
           <h3>——  新闻资讯  ——</h3>
           <span>news</span>
@@ -192,7 +192,9 @@
               </div>
             </div>
             <div class="compay-new-list">
-
+              <div class="news-list-lt"></div>
+              <div class="news-list-lt"></div>
+              <div class="news-list-lt"></div>
             </div>
             <div class="news-menu">
               <el-row class="tac">
@@ -217,8 +219,30 @@
               </el-row>  
             </div>
           </div>
-          <div class="btn-more">
+          <div class="btn-more news-more">
             <el-button>更多</el-button>
+          </div>
+          <div class="write-info" v-if="isShow">
+            <div class="write-info-box">
+              <img src="../assets/images/close.png" alt="" class="write-info-close">
+              <div class="write-info-text">
+                <div class="write-info-list">
+                  <img src="../assets/images/events-icon2.png" alt="">
+                </div>
+                <div class="write-info-list">
+                  <el-input v-model="inputName" placeholder="请输入姓名"></el-input>
+                </div>
+                <div class="write-info-list">
+                  <el-input v-model="inputPhone" placeholder="请输入手机号"></el-input>
+                </div>
+                <div class="write-info-list">
+                  <el-input v-model="inputAddress" placeholder="请输入楼盘位置"></el-input>
+                </div>
+                <div class="write-info-list">
+                  <el-button type="primary">确定预约</el-button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>  
@@ -248,7 +272,11 @@ export default {
       seriesBG: '../../static/1.jpg',
       seriesName: '系列名',
       seriesIntroduce: '系列介绍',
-      company_detail: 'hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666'
+      company_detail: 'hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666',
+      isShow: true,
+      inputName: '',
+      inputPhone: '',
+      inputAddress: ''
     };
   },
   mounted: function() {

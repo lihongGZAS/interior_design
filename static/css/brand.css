@@ -1,0 +1,119 @@
+/* top img style */
+.advertise-img {
+  width: 100%;
+  max-width: 1920px;
+  height: 300px;
+  border: 1px solid blue;
+}
+.advertise-img img {
+  width: 100%;
+  height: 100%;
+}
+
+/* company introduce */
+.container-content {
+  width: 100%;
+  display: table;
+  position: relative;
+}
+.container-content-lt {
+  width: 50%;
+  height: 700px;
+  display: table-cell;
+  border: 1px solid red;
+  box-sizing: border-box;
+}
+.container-content-lt img{
+  width: 100%;
+  height: 100%;
+}
+.container-content-rt {
+  width: 50%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  padding: 40px;
+  border: 1px solid gray;
+  box-sizing: border-box;
+}
+.container-content-rt span {
+  display: block;
+  margin: 20px 0px;
+  color: #333;
+}
+.container-content-rt h2 {
+  color: #333;
+  font-size: 30px;
+  font-weight: bolder;
+}
+.container-content-rt .company-slogan {
+  font-size: 18px;
+  color: #666;
+}
+.cat-line {
+  width: 80px;
+  height: 1px;
+  border: 1px solid #888;
+  box-sizing: border-box;
+}
+.company-introduce-text {
+  font-size: 20px;
+  font-weight: bolder;
+}
+.container-content-rt .keyword {
+  font-size: 28px;
+}
+.container-content-rt .company-introduce-detail {
+  font-size: 14px;
+  color: #666;
+}
+
+/* reverse img position */
+.reverse-img-position {
+  width: 100%;
+  display: table;
+  position: relative;
+}
+.reserse-img-rt {
+  width: 50%;
+  height: 700px;
+  display: table-cell;
+  border: 1px solid red;
+  box-sizing: border-box;
+}
+.reserse-img-rt img {
+  width: 100%;
+  height: 100%;
+}
+.reserse-img-lt {
+  width: 50%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  padding: 40px;
+  border: 1px solid gray;
+  box-sizing: border-box;
+}
+.reserse-img-lt span {
+  display: block;
+  margin: 20px 0px;
+  color: #333;
+}
+.reserse-img-lt h2 {
+  color: #333;
+  font-size: 30px;
+  font-weight: bolder;
+}
+.reserse-img-lt .company-slogan {
+  font-size: 18px;
+  color: #666;
+}
+.reserse-img-lt .keyword {
+  font-size: 28px;
+}
+.reserse-img-lt .company-introduce-detail {
+  font-size: 14px;
+  color: #666;
+}

@@ -1,16 +1,21 @@
 <template>
   <div class="header-module">
     <div class="logoImg">
-      <!-- src="../assets/logo.png" -->
-      <img src="{{}}"  alt="这里是导航栏logo">
+      <img src="{{}}"  alt="LOGO">
     </div>
     <div class="menu-list">
-      <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#0a60b9" text-color="#fff"
+      <!-- <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#0a60b9" text-color="#fff"
         active-text-color="#fff" height="120px">
-        <el-menu-item index="1">首页</el-menu-item>
-        <el-menu-item index="2">全屋定制</el-menu-item>
+        <el-menu-item index="1"><router-link to="/">首页</router-link></el-menu-item>
+        <el-menu-item index="2"><router-link to="/customization">全屋定制</router-link></el-menu-item>
         <el-menu-item index="3">产品</el-menu-item>
         <el-menu-item index="4"><a href="#" target="_blank">品牌实力</a></el-menu-item>
+      </el-menu> -->
+      <el-menu :default-active="this.$router.path" router mode="horizontal" background-color="#0a60b9" text-color="#fff"
+        active-text-color="#fff" height="120px">
+          <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
+              {{ item.navItem }}
+          </el-menu-item>
       </el-menu>
     </div>
     <div class="tel-phone">
@@ -26,7 +31,13 @@ export default {
     return {
       activeIndex: '1',
       activeIndex2: '1',
-      tel_phone: 88888888
+      tel_phone: 88888888,
+      navList:[
+          {name:'/',navItem:'首页'},
+          {name:'/customization',navItem:'全屋定制'},
+          {name:'/product',navItem:'产品'},
+          {name:'/brand',navItem:'品牌'},
+      ]
     };
   },
   methods: {
@@ -79,6 +90,9 @@ export default {
     right: 120px;
     color: #fff;
     font-weight: bolder;
+  }
+  .el-menu--horizontal {
+    border: none;
   }
 </style>
 
