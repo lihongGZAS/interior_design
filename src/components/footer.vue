@@ -3,7 +3,7 @@
     <div class="company-desc">
       <div class="company-desc-left">
         <div class="company-logo">
-          <img src="{{}}" alt="这里是底部logo">
+          <img :src="footerLogo" alt="这里是底部logo">
         </div>
         <div class="company-introduce">
           <p>{{company_desc}}</p>
@@ -37,6 +37,7 @@
     name: 'footerDiv',
     data() {
       return {
+        footerLogo: '',
         company_desc: '简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍简要介绍',
         company_address: '浙江省台州市XXX镇XXX街XX号',
         company_qrcode: '../../static/QR_code.jpg', // 模拟请求到的图片地址,动态配置的本地图片只能放在static文件夹下，

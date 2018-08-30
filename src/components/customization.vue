@@ -16,7 +16,7 @@
     <div class="series-one-desc">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide slide1" v-for="item in seriesOne" :key="item.id">
+          <div class="swiper-slide slide1" v-for="(item, i) in seriesOne" :key="i">
             <img class="swiper-container-img" :src="item.url" alt="">
           </div>
         </div>
@@ -49,7 +49,7 @@
     <div class="series-two-desc">
       <div class="swiper-container2">
         <div class="swiper-wrapper">
-          <div class="swiper-slide slide1" v-for="item in seriesTwo" :key="item.id">
+          <div class="swiper-slide slide1" v-for="(item,i) in seriesTwo" :key="i">
             <img class="swiper-container-img" :src="item.url" alt="">
           </div>
         </div>
@@ -91,18 +91,18 @@ export default {
       series_two_detail: '../../static/1.jpg',
       hallway_introduce: '玄关介绍,玄关介绍。玄关介绍,玄关介绍。玄关介绍,玄关介绍。玄关介绍,玄关介绍。',
       seriesOne: [
-        { url: "../../static/1.jpg", id: 1 },
-        { url: "../../static/2.jpg", id: 2 },
-        { url: "../../static/3.jpg", id: 3 },
-        { url: "../../static/4.jpg", id: 4 },
-        { url: "../../static/5.jpg", id: 5 }
+        { url: "../../static/1.jpg" },
+        { url: "../../static/2.jpg" },
+        { url: "../../static/3.jpg" },
+        { url: "../../static/4.jpg" },
+        { url: "../../static/5.jpg" }
       ],
       seriesTwo: [
-        { url: "../../static/1.jpg", id: 1 },
-        { url: "../../static/2.jpg", id: 2 },
-        { url: "../../static/3.jpg", id: 3 },
-        { url: "../../static/4.jpg", id: 4 },
-        { url: "../../static/5.jpg", id: 5 }
+        { url: "../../static/1.jpg" },
+        { url: "../../static/2.jpg" },
+        { url: "../../static/3.jpg" },
+        { url: "../../static/4.jpg" },
+        { url: "../../static/5.jpg" }
       ],
     }
   },

@@ -6,7 +6,9 @@
     <div class="goods-show-list">
       <div class="goods-names-picture" v-for="$index in 5" :key="$index">
         <div class="goods-picture">
-          <!-- <img :src="containCL" alt="找不到图片"> -->
+          <div class="goods-picture-box">
+            <img src="../assets/images/test.png" alt="橱柜图片">
+          </div>
         </div>
         <span>说明{{$index}}</span>
       </div>

@@ -2,7 +2,7 @@
   <div class="home-div">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide slide1" v-for="item in lunboUrls" :key="item.id">
+        <div class="swiper-slide slide1" v-for="(item,i) in lunboUrls" :key="i">
           <img class="swiper-container-img" :src="item.url" alt="">
         </div>
       </div>
@@ -136,7 +136,9 @@
           <div class="goods-show-list">
             <div class="goods-names-picture" v-for="$index in 5" :key="$index">
               <div class="goods-picture">
-                <!-- <img :src="containCL" alt="找不到图片"> -->
+                <div class="goods-picture-box">
+                  <img src="../assets/images/test.png" alt="橱柜图片">
+                </div>
               </div>
               <span>说明{{$index}}</span>
             </div>
@@ -224,7 +226,7 @@
           </div>
           <div class="write-info" v-if="isShow">
             <div class="write-info-box">
-              <img src="../assets/images/close.png" alt="" class="write-info-close">
+              <img src="../assets/images/close.png" alt="" class="write-info-close" @click="closeModal">
               <div class="write-info-text">
                 <div class="write-info-list">
                   <img src="../assets/images/events-icon2.png" alt="">
@@ -256,11 +258,11 @@ export default {
   data() {
     return {
       lunboUrls: [
-        { url: "../../static/1.jpg", id: 1 },
-        { url: "../../static/2.jpg", id: 2 },
-        { url: "../../static/3.jpg", id: 3 },
-        { url: "../../static/4.jpg", id: 4 },
-        { url: "../../static/5.jpg", id: 5 }
+        { url: "../../static/1.jpg" },
+        { url: "../../static/2.jpg" },
+        { url: "../../static/3.jpg" },
+        { url: "../../static/4.jpg" },
+        { url: "../../static/5.jpg" }
       ],
       trademarkInfo: [
         {title: '设计力', desc: 'disign'},
@@ -280,8 +282,8 @@ export default {
     };
   },
   mounted: function() {
-      // 轮播插件初始化
-      var mySwiper = new Swiper(".swiper-container", {
+    // 轮播插件初始化
+    var mySwiper = new Swiper(".swiper-container", {
       pagination: ".pagination",
       paginationClickable: true,
       // autoplay: 5000,
@@ -296,8 +298,13 @@ export default {
         swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
       }
     });
+  },
+  methods: {
+    closeModal: function() {
+      this.isShow = !this.isShow;
+    }
   }
- };
+};
 </script>
 
 <style scoped>
