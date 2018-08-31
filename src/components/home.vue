@@ -14,7 +14,7 @@
             <div class="home-events-box-item">
               <a href="#" target="_blank">
                 <i>
-                  <img src="../assets/images/events-icon6.png" alt="">
+                  <img src="../assets/images/iconTest.png" alt="">
                   <img src="../assets/images/events-icon6-active.png" alt="">
                 </i>
                 <h2>预约尺寸</h2>
@@ -146,7 +146,7 @@
           <div class="style-list">
             <div class="style-list-intro">
               <el-row class="series-style-list">
-                <el-col :span='7' v-for="$index in 6" :key="$index">
+                <el-col :span='7' v-for="$index in 6" :key="$index" @mouseover="showBoxShadow" @click="test">
                   <el-card :body-style="{ padding: '10px' }">
                     <img :src="containCL" class="image">
                     <div style="padding: 14px;">
@@ -302,6 +302,12 @@ export default {
   methods: {
     closeModal: function() {
       this.isShow = !this.isShow;
+    },
+    showBoxShadow: function() {
+      console.log('mouseover');
+    },
+    test: function() {
+      console.log('clicked');
     }
   }
 };
