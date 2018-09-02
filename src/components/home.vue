@@ -146,7 +146,7 @@
           <div class="style-list">
             <div class="style-list-intro">
               <el-row class="series-style-list">
-                <el-col :span='7' v-for="$index in 6" :key="$index" @mouseover="showBoxShadow" @click="test">
+                <el-col :span='8' v-for="$index in 6" :key="$index" @mouseover="showBoxShadow" @click="test">
                   <el-card :body-style="{ padding: '10px' }">
                     <img :src="containCL" class="image">
                     <div style="padding: 14px;">
@@ -195,8 +195,8 @@
             </div>
             <div class="compay-new-list">
               <div class="news-list-lt"></div>
-              <div class="news-list-lt"></div>
-              <div class="news-list-lt"></div>
+              <div class="news-list-ct"></div>
+              <div class="news-list-rt"></div>
             </div>
             <div class="news-menu">
               <el-row class="tac">
