@@ -95,23 +95,9 @@
           <div class="container-content-lt1">
             <el-row class="tac">
               <el-col :span="12">
-                <el-menu default-active="1" class="el-menu-vertical-demo">
-                  <el-menu-item index="1">
-                    <template slot="title">
-                      <span>系列一</span>
-                    </template>
-                  </el-menu-item>
-                  <el-menu-item index="2">
-                    <span slot="title">系列二</span>
-                  </el-menu-item>
-                  <el-menu-item index="3">
-                    <span slot="title">系列三</span>
-                  </el-menu-item>
-                  <el-menu-item index="4">
-                    <span slot="title">系列四</span>
-                  </el-menu-item>
-                  <el-menu-item index="5">
-                    <span slot="title">更多</span>
+                <el-menu class="el-menu-vertical-demo" :default-active="defaultAct" :active="defaultAct">
+                  <el-menu-item v-for="(item, i) in seriesInfo" :key="i" :index="i.toString()" @mouseover.native="showDiff(i)">
+                    <span slot="title">{{item.seriesName}}</span>
                   </el-menu-item>
                 </el-menu>
               </el-col>
@@ -146,7 +132,7 @@
           <div class="style-list">
             <div class="style-list-intro">
               <el-row class="series-style-list">
-                <el-col :span='8' v-for="$index in 6" :key="$index" @mouseover="showBoxShadow" @click="test">
+                <el-col :span='8' v-for="$index in 6" :key="$index">
                   <el-card :body-style="{ padding: '10px' }">
                     <img :src="containCL" class="image">
                     <div style="padding: 14px;">
@@ -194,8 +180,22 @@
               </div>
             </div>
             <div class="compay-new-list">
-              <div class="news-list-lt"></div>
-              <div class="news-list-ct"></div>
+              <div class="news-list-lt">
+                <img :src="newsInfo.newsImg" alt="新闻图片">
+                <div class="news-informartion">
+                  <div style="height: 120px;border-left:1px solid #ccc;"></div>
+                  <div>
+                    <h1>新闻资讯</h1>
+                    <span>News Information</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news-list-ct">
+                <div v-for="(item, i) in newsInfo.newsText1" :key="i" class="news-ct-box">
+                  <h3>{{item.title}}</h3>
+                  <p>{{item.content}}</p>
+                </div>
+              </div>
               <div class="news-list-rt"></div>
             </div>
             <div class="news-menu">
@@ -221,7 +221,7 @@
               </el-row>  
             </div>
           </div>
-          <div class="btn-more news-more">
+          <div class="btn-more news-more-btn">
             <el-button>更多</el-button>
           </div>
           <div class="write-info" v-if="isShow">
@@ -264,15 +264,35 @@ export default {
         { url: "../../static/4.jpg" },
         { url: "../../static/5.jpg" }
       ],
+      seriesInfo: [
+        {seriesName: '系列一',url: '../../static/1.jpg', seriesIntroduce: '系列一介绍说明'},
+        {seriesName: '系列二',url: '../../static/2.jpg', seriesIntroduce: '系列二介绍说明'},
+        {seriesName: '系列三',url: '../../static/3.jpg', seriesIntroduce: '系列三介绍说明'},
+        {seriesName: '系列四',url: '../../static/4.jpg', seriesIntroduce: '系列四介绍说明'},
+        {seriesName: '更多',url: '../../static/5.jpg', seriesIntroduce: '系列五介绍说明'},
+      ],
       trademarkInfo: [
         {title: '设计力', desc: 'disign'},
         {title: '生产力', desc: 'product'},
         {title: '服务', desc: 'service'},
         {title: '保障', desc: 'hello world4'}
       ],
+      newsInfo: {
+        newsImg: '../../static/1.jpg',
+        newsText1: [
+          {title: '新闻信息左上',content: '这是新闻消息左上的内容部分，今天下午发生一场杀人事件'},
+          {title: '新闻信息左下',content: '这是新闻消息左下的内容部分，今天下午发生一场杀人事件'}
+        ],
+        newsText2: [
+          {title: '新闻信息右上',content: '这是新闻消息右上的内容部分，今天下午发生一场杀人事件'},
+          {title: '新闻信息右中',content: '这是新闻消息右中的内容部分，今天下午发生一场杀人事件'},
+          {title: '新闻信息右下',content: '这是新闻消息右下的内容部分，今天下午发生一场杀人事件'}
+        ]
+      },
       containCL: '../../static/1.jpg',
       seriesBG: '../../static/1.jpg',
-      seriesName: '系列名',
+      defaultAct: '0',
+      seriesName: '系列一',
       seriesIntroduce: '系列介绍',
       company_detail: 'hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666',
       isShow: true,
@@ -281,6 +301,7 @@ export default {
       inputAddress: ''
     };
   },
+  props: ['index'],
   mounted: function() {
     // 轮播插件初始化
     var mySwiper = new Swiper(".swiper-container", {
@@ -303,12 +324,13 @@ export default {
     closeModal: function() {
       this.isShow = !this.isShow;
     },
-    showBoxShadow: function() {
-      console.log('mouseover');
+    showDiff: function(index) {
+      // console.log(index);
+      this.defaultAct = index.toString();
+      this.seriesBG = this.seriesInfo[index].url;
+      this.seriesName = this.seriesInfo[index].seriesName;
+      this.seriesIntroduce = this.seriesInfo[index].seriesIntroduce;
     },
-    test: function() {
-      console.log('clicked');
-    }
   }
 };
 </script>
