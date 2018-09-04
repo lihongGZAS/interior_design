@@ -1,5 +1,5 @@
 <template>
-  <div class="home-div">
+  <div class="home-div" id="home-div">
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide slide1" v-for="(item,i) in lunboUrls" :key="i">
@@ -171,7 +171,7 @@
         </div>
         <div class="container-content">
           <div class="company-news">
-            <div class="make-an-appiontment">
+            <div class="make-an-appiontment" @click="appiontment">
               <div class="appiontment-lt">
                 <span>立即预约</span>
               </div>
@@ -180,23 +180,104 @@
               </div>
             </div>
             <div class="compay-new-list">
-              <div class="news-list-lt">
+              <div class="news-list-lt" @mouseover="zoomOut" @mouseout="resetIcon">
                 <img :src="newsInfo.newsImg" alt="新闻图片">
                 <div class="news-informartion">
-                  <div style="height: 120px;border-left:1px solid #ccc;"></div>
-                  <div>
-                    <h1>新闻资讯</h1>
-                    <span>News Information</span>
+                  <div class="news-info-position">
+                    <div class="news-lt-catline"></div>
+                    <div class="news-info-title">
+                      <h2>新闻资讯</h2>
+                      <span>News Information</span>
+                    </div>
+                    <div class="news-show-icon">
+                      <img :src="moreNewsIcon" alt="">
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="news-list-ct">
-                <div v-for="(item, i) in newsInfo.newsText1" :key="i" class="news-ct-box">
-                  <h3>{{item.title}}</h3>
-                  <p>{{item.content}}</p>
+                <div class="show-newsrt-box">
+                  <div class="news-ct-box1 hover-show-shadow">
+                    <div class="news-ct-title">新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行</div>
+                    <div class="news-ct-content">
+                      新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行,新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行,新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行
+                    </div>
+                    <div class="news-ct-ctLine"></div>
+                    <div class="news-date-box">
+                      <div class="news-date">
+                        <div class="news-date-day">04</div>
+                        <div class="news-date-yearmonth">2018.09</div>
+                      </div>
+                      <div class="news-date-icon">
+                        <img src="../assets/images/rightArrow.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="news-ct-box2 hover-show-shadow">
+                    <div class="news-ct-title">新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行</div>
+                    <div class="news-ct-content">
+                      新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行,新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行,新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行
+                    </div>
+                    <div class="news-ct-ctLine"></div>
+                    <div class="news-date-box">
+                      <div class="news-date">
+                        <div class="news-date-day">04</div>
+                        <div class="news-date-yearmonth">2018.09</div>
+                      </div>
+                      <div class="news-date-icon">
+                        <img src="../assets/images/rightArrow.png" alt="">
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="news-list-rt"></div>
+              <div class="news-list-rt">
+                <div class="news-rt-info news-rt-up hover-show-shadow">
+                  <div class="news-rt-date">
+                    <div class="news-rt-databox">
+                      <div class="news-date-day">04</div>
+                      <div class="news-rt-catline"></div>
+                      <div class="news-date-yearmonth">2018.09</div>
+                    </div>
+                  </div>
+                  <div class="news-rt-txt">
+                    <div>相信你也知道，小程序最近又火起来了，这是测试信息。</div>
+                    <div class="news-date-icon news-rt-icon">
+                      <img src="../assets/images/rightArrow.png" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="news-rt-info news-rt-middle hover-show-shadow">
+                  <div class="news-rt-date">
+                    <div class="news-rt-databox">
+                      <div class="news-date-day">04</div>
+                      <div class="news-rt-catline"></div>
+                      <div class="news-date-yearmonth">2018.09</div>
+                    </div>
+                  </div>
+                  <div class="news-rt-txt">
+                    <div>相信你也知道，小程序最近又火起来了，这是测试信息。</div>
+                    <div class="news-date-icon news-rt-icon">
+                      <img src="../assets/images/rightArrow.png" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="news-rt-info news-rt-down hover-show-shadow">
+                  <div class="news-rt-date">
+                    <div class="news-rt-databox">
+                      <div class="news-date-day">04</div>
+                      <div class="news-rt-catline"></div>
+                      <div class="news-date-yearmonth">2018.09</div>
+                    </div>
+                  </div>
+                  <div class="news-rt-txt">
+                    <div>相信你也知道，小程序最近又火起来了，这是测试信息。</div>
+                    <div class="news-date-icon news-rt-icon">
+                      <img src="../assets/images/rightArrow.png" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="news-menu">
               <el-row class="tac">
@@ -204,7 +285,7 @@
                   <el-menu default-active="2" class="el-menu-vertical-demo">
                     <el-menu-item index="1">
                       <template slot="title">
-                        <span>顶部</span>
+                        <span><a href="#app">顶部</a></span>
                       </template>
                     </el-menu-item>
                     <el-menu-item index="2">
@@ -257,40 +338,44 @@ export default {
   name: "home",
   data() {
     return {
+      // 轮播图片数据
       lunboUrls: [
-        { url: "../../static/1.jpg" },
-        { url: "../../static/2.jpg" },
-        { url: "../../static/3.jpg" },
-        { url: "../../static/4.jpg" },
-        { url: "../../static/5.jpg" }
+        { url: "../../static/images/1.jpg" },
+        { url: "../../static/images/2.jpg" },
+        { url: "../../static/images/3.jpg" },
+        { url: "../../static/images/4.jpg" },
+        { url: "../../static/images/5.jpg" }
       ],
+      // 个系列对应的数据
       seriesInfo: [
-        {seriesName: '系列一',url: '../../static/1.jpg', seriesIntroduce: '系列一介绍说明'},
-        {seriesName: '系列二',url: '../../static/2.jpg', seriesIntroduce: '系列二介绍说明'},
-        {seriesName: '系列三',url: '../../static/3.jpg', seriesIntroduce: '系列三介绍说明'},
-        {seriesName: '系列四',url: '../../static/4.jpg', seriesIntroduce: '系列四介绍说明'},
-        {seriesName: '更多',url: '../../static/5.jpg', seriesIntroduce: '系列五介绍说明'},
+        {seriesName: '系列一',url: '../../static/images/1.jpg', seriesIntroduce: '系列一介绍说明'},
+        {seriesName: '系列二',url: '../../static/images/2.jpg', seriesIntroduce: '系列二介绍说明'},
+        {seriesName: '系列三',url: '../../static/images/3.jpg', seriesIntroduce: '系列三介绍说明'},
+        {seriesName: '系列四',url: '../../static/images/4.jpg', seriesIntroduce: '系列四介绍说明'},
+        {seriesName: '更多',url: '../../static/images/5.jpg', seriesIntroduce: '系列五介绍说明'},
       ],
+      // 品牌数据
       trademarkInfo: [
         {title: '设计力', desc: 'disign'},
         {title: '生产力', desc: 'product'},
         {title: '服务', desc: 'service'},
         {title: '保障', desc: 'hello world4'}
       ],
+      // 新闻信息数据
       newsInfo: {
-        newsImg: '../../static/1.jpg',
+        newsImg: '../../static/images/1.jpg',
         newsText1: [
-          {title: '新闻信息左上',content: '这是新闻消息左上的内容部分，今天下午发生一场杀人事件'},
-          {title: '新闻信息左下',content: '这是新闻消息左下的内容部分，今天下午发生一场杀人事件'}
+          {title: '新闻信息左上',content: '这是新闻消息左上的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'},
+          {title: '新闻信息左下',content: '这是新闻消息左下的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'}
         ],
         newsText2: [
-          {title: '新闻信息右上',content: '这是新闻消息右上的内容部分，今天下午发生一场杀人事件'},
-          {title: '新闻信息右中',content: '这是新闻消息右中的内容部分，今天下午发生一场杀人事件'},
-          {title: '新闻信息右下',content: '这是新闻消息右下的内容部分，今天下午发生一场杀人事件'}
+          {title: '新闻信息右上',content: '这是新闻消息右上的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'},
+          {title: '新闻信息右中',content: '这是新闻消息右中的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'},
+          {title: '新闻信息右下',content: '这是新闻消息右下的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'}
         ]
       },
-      containCL: '../../static/1.jpg',
-      seriesBG: '../../static/1.jpg',
+      containCL: '../../static/images/1.jpg',
+      seriesBG: '../../static/images/1.jpg',
       defaultAct: '0',
       seriesName: '系列一',
       seriesIntroduce: '系列介绍',
@@ -298,7 +383,8 @@ export default {
       isShow: true,
       inputName: '',
       inputPhone: '',
-      inputAddress: ''
+      inputAddress: '',
+      moreNewsIcon: '../../static/images/openIcon.png'
     };
   },
   props: ['index'],
@@ -307,16 +393,16 @@ export default {
     var mySwiper = new Swiper(".swiper-container", {
       pagination: ".pagination",
       paginationClickable: true,
-      // autoplay: 5000,
+      autoplay: 5000,
       speed: 1,
       loop: true,
 
       onInit: function(swiper) {
-        swiperAnimateCache(swiper); //隐藏动画元素
-        swiperAnimate(swiper); //初始化完成开始动画
+        swiperAnimateCache(swiper); // 隐藏动画元素
+        swiperAnimate(swiper); // 初始化完成开始动画
       },
       onSlideChangeEnd: function(swiper) {
-        swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+        swiperAnimate(swiper); // 每个slide切换结束时也运行当前slide动画
       }
     });
   },
@@ -324,13 +410,25 @@ export default {
     closeModal: function() {
       this.isShow = !this.isShow;
     },
+    // 根据鼠标移动到不同的系列上，显示不同的内容信息
     showDiff: function(index) {
-      // console.log(index);
       this.defaultAct = index.toString();
       this.seriesBG = this.seriesInfo[index].url;
       this.seriesName = this.seriesInfo[index].seriesName;
       this.seriesIntroduce = this.seriesInfo[index].seriesIntroduce;
     },
+    zoomOut: function() {
+      this.moreNewsIcon = '../../static/images/openIcon1.png';
+    },
+    resetIcon: function() {
+      this.moreNewsIcon = '../../static/images/openIcon.png';
+    },
+    // 确定预约
+    appiontment: function() {
+      if(!this.isShow) {
+        this.isShow = !this.isShow;
+      }
+    }
   }
 };
 </script>

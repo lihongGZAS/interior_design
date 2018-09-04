@@ -16,12 +16,12 @@
     <div class="style-list">
       <div class="style-list-intro">
         <el-row class="series-style-list">
-          <el-col :span='7' v-for="$index in 9" :key="$index">
-            <el-card :body-style="{ padding: '20px' }">
+          <el-col :span='8' v-for="$index in 9" :key="$index">
+            <el-card :body-style="{ padding: '10px' }">
               <img :src="containCL" class="image">
               <div style="padding: 14px;">
-                <span class="series-lists-name">橱柜名</span><br>
-                <span class="series-lists-style">橱柜风格</span>
+                <span style="font-size: 20px;color:#333;">橱柜名</span><br>
+                <span class="series-list-name">橱柜风格</span>
               </div>
             </el-card>
           </el-col>
