@@ -3,7 +3,7 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide slide1" v-for="(item,i) in lunboUrls" :key="i">
-          <img class="swiper-container-img" :src="item.url" alt="">
+          <img class="swiper-container-img" :src="item.ImgUrl" alt="">
         </div>
       </div>
       <div class="pagination"></div>
@@ -15,50 +15,46 @@
               <a href="#" target="_blank">
                 <i>
                   <img src="../assets/images/iconTest.png" alt="">
+                  <!-- <img :src="processImgs[0].ImgUrl" alt="" srcset=""> -->
                   <img src="../assets/images/events-icon6-active.png" alt="">
                 </i>
                 <h2>预约尺寸</h2>
-                <p class="js-title" title="">预约尺寸111</p>
               </a>
             </div>
             <div class="home-events-box-item">
               <a href="#" target="_blank">
                 <i>
-                  <img src="../assets/images/events-icon1.png" alt="">
+                  <img src="../assets/images/iconTest.png" alt="">
                   <img src="../assets/images/events-icon1-active.png" alt="">
                 </i>
                 <h2>上门测量</h2>
-                <p class="js-title" title="">上门测量111</p>
               </a>
             </div>
             <div class="home-events-box-item">
               <a href="#" target="_blank">
                 <i>
-                  <img src="../assets/images/events-icon2.png" alt="">
+                  <img src="../assets/images/iconTest.png" alt="">
                   <img src="../assets/images/events-icon2-active.png" alt="">
                 </i>
                 <h2>专业设计</h2>
-                <p class="js-title" title="">专业设计111</p>
               </a>
             </div>
             <div class="home-events-box-item">
               <a href="#" target="_blank">
                 <i>
-                  <img src="../assets/images/events-icon9.png" alt="">
+                  <img src="../assets/images/iconTest.png" alt="">
                   <img src="../assets/images/events-icon9-active.png" alt="">
                 </i>
                 <h2>配送安装</h2>
-                <p class="js-title" title="">配送安装111</p>
               </a>
             </div>
             <div class="home-events-box-item">
               <a href="#" target="_blank">
                 <i>
-                  <img src="../assets/images/events-icon9.png" alt="">
+                  <img src="../assets/images/iconTest.png" alt="">
                   <img src="../assets/images/events-icon9-active.png" alt="">
                 </i>
                 <h2>售后无忧</h2>
-                <p class="js-title" title="">售后无忧111</p>
               </a>
             </div>
           </div>
@@ -336,16 +332,18 @@
 <script>
 export default {
   name: "home",
+  props: ['index'],
   data() {
     return {
       // 轮播图片数据
       lunboUrls: [
-        { url: "../../static/images/1.jpg" },
-        { url: "../../static/images/2.jpg" },
-        { url: "../../static/images/3.jpg" },
-        { url: "../../static/images/4.jpg" },
-        { url: "../../static/images/5.jpg" }
+        // { ImgUrl: "../../static/images/1.jpg" },
+        // { ImgUrl: "../../static/images/2.jpg" },
+        // { ImgUrl: "../../static/images/3.jpg" },
+        // { ImgUrl: "../../static/images/4.jpg" },
+        // { ImgUrl: "../../static/images/5.jpg" }
       ],
+      processImgs: [],
       // 个系列对应的数据
       seriesInfo: [
         {seriesName: '系列一',url: '../../static/images/1.jpg', seriesIntroduce: '系列一介绍说明'},
@@ -354,6 +352,7 @@ export default {
         {seriesName: '系列四',url: '../../static/images/4.jpg', seriesIntroduce: '系列四介绍说明'},
         {seriesName: '更多',url: '../../static/images/5.jpg', seriesIntroduce: '系列五介绍说明'},
       ],
+
       // 品牌数据
       trademarkInfo: [
         {title: '设计力', desc: 'disign'},
@@ -387,24 +386,9 @@ export default {
       moreNewsIcon: '../../static/images/openIcon.png'
     };
   },
-  props: ['index'],
   mounted: function() {
     // 轮播插件初始化
-    var mySwiper = new Swiper(".swiper-container", {
-      pagination: ".pagination",
-      paginationClickable: true,
-      autoplay: 5000,
-      speed: 1,
-      loop: true,
-
-      onInit: function(swiper) {
-        swiperAnimateCache(swiper); // 隐藏动画元素
-        swiperAnimate(swiper); // 初始化完成开始动画
-      },
-      onSlideChangeEnd: function(swiper) {
-        swiperAnimate(swiper); // 每个slide切换结束时也运行当前slide动画
-      }
-    });
+    this.homeInit();
   },
   methods: {
     closeModal: function() {
@@ -428,8 +412,55 @@ export default {
       if(!this.isShow) {
         this.isShow = !this.isShow;
       }
+    },
+    homeInit: function() {
+      this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=439&Class=2", {
+        params: {
+          ID: 12345
+        }
+      })
+      .then(response => {
+        console.log(response);
+        this.lunboUrls = response.body.Sub[441].File;
+        this.processImgs = response.body.Sub[443].File;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+      // post请求
+      // this.$http.post("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=439&Class=2", {
+      // })
+      // .then(function(response) {
+      //   console.log(response);
+      // })
+      // .catch(function(error) {
+      //   console.log(error);
+      // });
     }
-  }
+  },
+  watch: {
+    lunboUrls () {
+      // 轮播插件会对轮播区域进行重载，所以每当轮播数据发生变化时，需调用一次轮播插件函数
+      setTimeout(()=>{
+        var mySwiper = new Swiper(".swiper-container", {
+        pagination: ".pagination",
+        paginationClickable: true,
+        autoplay: 5000,
+        speed: 1,
+        loop: true,
+
+        onInit: function(swiper) {
+          swiperAnimateCache(swiper); // 隐藏动画元素
+          swiperAnimate(swiper); // 初始化完成开始动画
+        },
+        onSlideChangeEnd: function(swiper) {
+          swiperAnimate(swiper); // 每个slide切换结束时也运行当前slide动画
+          }
+        });
+      }, 100)
+    }
+  },
 };
 </script>
 
