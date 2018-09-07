@@ -4,7 +4,7 @@
       <img :src="logoImg"  alt="LOGO--160*80">
     </div>
     <div class="menu-list">
-      <el-menu :default-active="this.$router.path" router mode="horizontal" background-color="#0a60b9" text-color="#fff"
+      <el-menu :default-active="this.$router.path" router mode="horizontal" background-color="#FFCD00" text-color="#fff"
         active-text-color="#fff" height="120px" @select="test">
         <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
           {{ item.navItem }}

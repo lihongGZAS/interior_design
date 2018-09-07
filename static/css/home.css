@@ -23,13 +23,13 @@
   padding-left: 60px;
 }
 .home-events-box-item i{
-  top: 24px;
+  top: 30px;
   left: 12px;
 }
 .home-events-box-item h2 {
   position: absolute;
   left: 110px;
-  top: 42px;
+  top: 48px;
 }
 
 /* container lists */
@@ -179,12 +179,12 @@
   animation:mymove 2.2s infinite;
   margin-bottom: 40px;
 }
-@keyframes mymove {
+ @keyframes mymove {
   from {transform: translateY(0px)}
   50% {transform: translateY(14px)}
   from {transform: translateY(0px)}
 }
-@-webkit-keyframes mymove {/*Safari and Chrome*/
+@-webkit-keyframes mymove {
   from {transform: translateY(0px)}
   50% {transform: translateY(14px)}
   from {transform: translateY(0px)}
@@ -196,8 +196,8 @@
 .goods-picture {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  border: 1px solid #999;
+  /* border-radius: 50%;
+  border: 1px solid #999; */
   position: relative;
 }
 .goods-picture-box {
@@ -222,10 +222,6 @@
 .clearfix:after {
     clear: both
 }
-.series-list-name {
-  font-size: 16px;
-  color: #666;
-}
 
 /* product style */
 .style-list {
@@ -249,10 +245,10 @@
   box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
 }
 .el-card:hover {
-  -webkit-box-shadow: 0 20px 6px #999;
-  -moz-box-shadow: 0 20px 6px #999;
-  -o-box-shadow: 0 20px 6px #999;
-  box-shadow: 0 20px 6px #999;
+  -webkit-box-shadow: 0 20px 40px #e5e5e5;
+  -moz-box-shadow: 0 20px 40px #e5e5e5;
+  -o-box-shadow: 0 20px 40px #e5e5e5;
+  box-shadow: 0 20px 40px #e5e5e5;
   -webkit-transform: translateY(-10px);
   -moz-transform: translateY(-10px);
   -o-transform: translateY(-10px);
@@ -272,19 +268,33 @@
 }
 .series-style-list img.image {
   width: 100%;
-  height: 530px;
+  height: 484px;
   display: block;
+}
+.series-common-style {
+  display: block;
+}
+.series-list-name {
+  font-size: 20px;
+  color: #333;
+  margin-top: 14px;
+}
+.series-list-desc {
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
 }
 
 /* 品牌实力样式 */
 .trademark {
-  background: #0a60b9;
+  /* background: #0a60b9; */
+  background: #fff;
   height: 500px;
   position: relative;
 }
 .trademark-info {
   width: 80%;
-  height: 300px;
+  height: 390px;
   border: 1px solid red;
   position: absolute;
   display: table;
@@ -300,22 +310,25 @@
   vertical-align: middle;
 }
 .trademark-info-list:hover {
-  box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 20px 40px #e5e5e5;
 }
 .trademark-info-list img {
   width: 64px;
   height: 64px;
+  margin-top: 50px;
 }
 .trademark-info-list h2 {
   margin-top: 25px;
-  margin-bottom: 44px;
+  margin-bottom: 20px;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
   color: #34475F;
 }
 .trademark-info-list span {
-  vertical-align: middle;
+  /* vertical-align: middle; */
+  display: block;
+  margin: 10px 20px;
 }
 
 /* news */

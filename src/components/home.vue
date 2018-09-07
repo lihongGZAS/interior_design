@@ -11,50 +11,13 @@
       <div class="home-events">
         <div class="home-events-box" style="min-height:30px;">
           <div class="home-events-box-wrapper" style="min-height:30px;">
-            <div class="home-events-box-item">
+            <div class="home-events-box-item" v-for="(item, i) in processImgs" :key="i">
               <a href="#" target="_blank">
                 <i>
-                  <img src="../assets/images/iconTest.png" alt="">
-                  <!-- <img :src="processImgs[0].ImgUrl" alt="" srcset=""> -->
-                  <img src="../assets/images/events-icon6-active.png" alt="">
+                  <img :src="item.ImgUrl" alt="">
+                  <img :src="item.ImgUrl" alt="">
                 </i>
-                <h2>预约尺寸</h2>
-              </a>
-            </div>
-            <div class="home-events-box-item">
-              <a href="#" target="_blank">
-                <i>
-                  <img src="../assets/images/iconTest.png" alt="">
-                  <img src="../assets/images/events-icon1-active.png" alt="">
-                </i>
-                <h2>上门测量</h2>
-              </a>
-            </div>
-            <div class="home-events-box-item">
-              <a href="#" target="_blank">
-                <i>
-                  <img src="../assets/images/iconTest.png" alt="">
-                  <img src="../assets/images/events-icon2-active.png" alt="">
-                </i>
-                <h2>专业设计</h2>
-              </a>
-            </div>
-            <div class="home-events-box-item">
-              <a href="#" target="_blank">
-                <i>
-                  <img src="../assets/images/iconTest.png" alt="">
-                  <img src="../assets/images/events-icon9-active.png" alt="">
-                </i>
-                <h2>配送安装</h2>
-              </a>
-            </div>
-            <div class="home-events-box-item">
-              <a href="#" target="_blank">
-                <i>
-                  <img src="../assets/images/iconTest.png" alt="">
-                  <img src="../assets/images/events-icon9-active.png" alt="">
-                </i>
-                <h2>售后无忧</h2>
+                <h2>{{item.Name}}</h2>
               </a>
             </div>
           </div>
@@ -116,24 +79,24 @@
         </div>
         <div class="container-content">
           <div class="goods-show-list">
-            <div class="goods-names-picture" v-for="$index in 5" :key="$index">
+            <div class="goods-names-picture" v-for="(item, i) in productIcons" :key="i">
               <div class="goods-picture">
-                <div class="goods-picture-box">
-                  <img src="../assets/images/test.png" alt="橱柜图片">
+                <div class="goods-picture-box" @mouseover="overChangeImg(i)" @mouseout="leaveChangeImg(i)">
+                  <img :src="item.ImgUrl" alt="橱柜图片">
                 </div>
               </div>
-              <span>说明{{$index}}</span>
+              <span>{{item.Name}}</span>
             </div>
           </div>
           <div class="style-list">
             <div class="style-list-intro">
               <el-row class="series-style-list">
-                <el-col :span='8' v-for="$index in 6" :key="$index">
-                  <el-card :body-style="{ padding: '10px' }">
-                    <img :src="containCL" class="image">
+                <el-col :span='8' v-for="(item, i) in productImgs" :key="i">
+                  <el-card :body-style="{ padding: '34px' }">
+                    <img :src="item.ImgUrl" class="image">
                     <div style="padding: 14px;">
-                      <span style="font-size: 20px;color:#333;">橱柜名</span><br>
-                      <span class="series-list-name">橱柜风格</span>
+                      <span class="series-list-name series-common-style">{{item.Name}}</span>
+                      <span class="series-list-desc series-common-style">{{item.Desc}}</span>
                     </div>
                   </el-card>
                 </el-col>
@@ -153,9 +116,11 @@
         <div class="container-content trademark">
           <div class="trademark-info">
             <div class="trademark-info-list" v-for="(item,$index) in trademarkInfo" :key="$index">
-              <img src="../assets/images/test.png" alt="">
-              <h2>{{item.title}}</h2>
-              <span>{{item.desc}}</span>
+              <img :src="item.ImgUrl" alt="">
+              <h2>{{item.Name}}</h2>
+              <span>用品质保驾护航</span>
+              <span>用态度践行服务</span>
+              <span>用真心赢得赞赏</span>
             </div>
           </div>
         </div>
@@ -344,6 +309,10 @@ export default {
         // { ImgUrl: "../../static/images/5.jpg" }
       ],
       processImgs: [],
+      templateSting: '',
+      productIcons: [],
+      productIcons2: [],
+      productImgs: [],
       // 个系列对应的数据
       seriesInfo: [
         {seriesName: '系列一',url: '../../static/images/1.jpg', seriesIntroduce: '系列一介绍说明'},
@@ -355,10 +324,10 @@ export default {
 
       // 品牌数据
       trademarkInfo: [
-        {title: '设计力', desc: 'disign'},
-        {title: '生产力', desc: 'product'},
-        {title: '服务', desc: 'service'},
-        {title: '保障', desc: 'hello world4'}
+        // {title: '设计力', desc: 'disign'},
+        // {title: '生产力', desc: 'product'},
+        // {title: '服务', desc: 'service'},
+        // {title: '保障', desc: 'hello world4'}
       ],
       // 新闻信息数据
       newsInfo: {
@@ -414,29 +383,50 @@ export default {
       }
     },
     homeInit: function() {
-      this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=439&Class=2", {
+      
+      this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=439&Class=3", {
         params: {
           ID: 12345
         }
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.lunboUrls = response.body.Sub[441].File;
         this.processImgs = response.body.Sub[443].File;
+        // 
+        this.productIcons = response.body.Sub[444].Sub[445].File;
+        this.productIcons2 = response.body.Sub[444].Sub[446].File;
+        this.trademarkInfo = response.body.Sub[456].File;
       })
       .catch(function(error) {
         console.log(error);
       });
 
-      // post请求
-      // this.$http.post("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=439&Class=2", {
-      // })
-      // .then(function(response) {
-      //   console.log(response);
-      // })
-      // .catch(function(error) {
-      //   console.log(error);
+      // 产品图标和图片
+      this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=459&Class=2", {
+      })
+      .then(function(response) {
+        console.log(response);
+        this.productImgs = response.body.Sub[460].File;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    },
+    overChangeImg: function(index) {
+      this.templateSting = this.productIcons[index].ImgUrl;
+      // this.productIcons2.forEach((key, value) => {
+        
       // });
+      for(const item of this.productIcons2) {
+        if(item.Name === this.productIcons[index].Name) {
+          this.productIcons[index].ImgUrl = item.ImgUrl;
+        }
+      }
+      // this.productIcons[index].ImgUrl = this.productIcons2[index].ImgUrl;
+    },
+    leaveChangeImg: function(index) {
+      this.productIcons[index].ImgUrl = this.templateSting;
     }
   },
   watch: {
