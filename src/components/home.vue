@@ -356,7 +356,7 @@ export default {
     };
   },
   mounted: function() {
-    // 轮播插件初始化
+    // home组件初始化请求
     this.homeInit();
   },
   methods: {
@@ -406,7 +406,7 @@ export default {
       this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=459&Class=2", {
       })
       .then(function(response) {
-        console.log(response);
+        // console.log(response);
         this.productImgs = response.body.Sub[460].File;
       })
       .catch(function(error) {

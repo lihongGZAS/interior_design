@@ -1,11 +1,11 @@
 <template>
   <div class="header-module">
     <div class="logoImg">
-      <img :src="logoImg"  alt="LOGO--160*80">
+      <img :src="logoImg"  alt="LOGO--180*60">
     </div>
     <div class="menu-list">
-      <el-menu :default-active="this.$router.path" router mode="horizontal" background-color="#FFCD00" text-color="#fff"
-        active-text-color="#fff" height="120px" @select="test">
+      <el-menu :default-active="$route.path" router mode="horizontal" background-color="#FFCD00" text-color="#3f3115"
+        active-text-color="#fff" height="120px">
         <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
           {{ item.navItem }}
         </el-menu-item>
@@ -32,9 +32,24 @@ export default {
       ]
     };
   },
+  mounted: function() {
+    this.headerInit();
+  },
   methods: {
-    test: function() {
-      console.log(this.$router.path);
+    headerInit: function() {
+      
+      this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=439&Class=3", {
+        params: {
+          ID: 12345
+        }
+      })
+      .then(response => {
+        console.log(response);
+        this.logoImg = response.body.Sub[457].File[0].ImgUrl;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
     }
   }
 };
