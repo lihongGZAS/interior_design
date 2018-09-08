@@ -63,13 +63,13 @@
   position: relative;
 }
 .footer-menu {
-  width: 50%;
+  width: 40%;
   height: 70px;
   padding: 0;
   line-height: 70px;
   border: 1px solid blue;
   position: absolute;
-  left: 50%;
+  left: 42%;
   transform: translateX(-50%);
 }
 .footer-menu span {
