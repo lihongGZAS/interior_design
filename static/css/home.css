@@ -157,7 +157,7 @@
   background: #585857;
   z-index: 10;
   opacity: 0.85;
-  text-align: center;
+  text-align: left;
   display: table-cell;
   vertical-align: middle;
   padding: 80px 10px;
@@ -165,8 +165,14 @@
 .container-content-rt1 h2 {
   font-size: 24px;
 }
+.container-content-rt1 span {
+  margin-top: 16px;
+  margin-bottom: 20px;
+  display: block;
+  font-size: 18px;
+}
 .container-content-rtline {
-  width: 100%;
+  width: 40%;
   color: #fff;
   margin-top: 40px;
   margin-bottom: 40px;

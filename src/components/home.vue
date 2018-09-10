@@ -32,15 +32,15 @@
         </div>
         <div class="container-content">
           <div class="container-content-lt">
-            <img :src="containCL" alt="">
+            <img :src="companyBgImg" alt="">
           </div>
           <div class="container-content-rt">
-            <span class="company-introduce-text">企业英文介绍</span>
-            <h2>企业名</h2>
-            <span class="company-slogan">企业标语</span>
+            <span class="company-introduce-text">{{companyEI}}</span>
+            <h2>{{companyName}}</h2>
+            <span class="company-slogan">{{companySlogan}}</span>
             <div class="cat-line"></div>
-            <span class="keyword">关键字</span>
-            <span class="keyword">关键字</span>
+            <span class="keyword">{{companyKeyword1}}</span>
+            <span class="keyword">{{companyKeyword2}}</span>
             <p class="company-introduce-detail">企业介绍详情：{{company_detail}}</p>
           </div>
         </div>
@@ -56,7 +56,7 @@
               <el-col :span="12">
                 <el-menu class="el-menu-vertical-demo" :default-active="defaultAct" :active="defaultAct">
                   <el-menu-item v-for="(item, i) in seriesInfo" :key="i" :index="i.toString()" @mouseover.native="showDiff(i)">
-                    <span slot="title">{{item.seriesName}}</span>
+                    <span slot="title">{{item.Name}}</span>
                   </el-menu-item>
                 </el-menu>
               </el-col>
@@ -67,8 +67,9 @@
           </div>
           <div class="container-content-rt1">
             <h2>{{seriesName}}</h2>
+            <span>{{seriesIntroduce2}}</span>
             <div class="cat-line container-content-rtline"></div>
-            <p>{{seriesIntroduce}}</p>
+            <p>{{seriesIntroduce3}}</p>
           </div>
         </div>
       </div>
@@ -249,34 +250,17 @@ export default {
   data() {
     return {
       // 轮播图片数据
-      lunboUrls: [
-        // { ImgUrl: "../../static/images/1.jpg" },
-        // { ImgUrl: "../../static/images/2.jpg" },
-        // { ImgUrl: "../../static/images/3.jpg" },
-        // { ImgUrl: "../../static/images/4.jpg" },
-        // { ImgUrl: "../../static/images/5.jpg" }
-      ],
+      lunboUrls: [],
       processImgs: [],
       templateSting: '',
       productIcons: [],
       productIcons2: [],
       productImgs: [],
       // 个系列对应的数据
-      seriesInfo: [
-        {seriesName: '系列一',url: '../../static/images/1.jpg', seriesIntroduce: '系列一介绍说明'},
-        {seriesName: '系列二',url: '../../static/images/2.jpg', seriesIntroduce: '系列二介绍说明'},
-        {seriesName: '系列三',url: '../../static/images/3.jpg', seriesIntroduce: '系列三介绍说明'},
-        {seriesName: '系列四',url: '../../static/images/4.jpg', seriesIntroduce: '系列四介绍说明'},
-        {seriesName: '更多',url: '../../static/images/5.jpg', seriesIntroduce: '系列五介绍说明'},
-      ],
+      seriesInfo: [],
 
       // 品牌数据
-      trademarkInfo: [
-        // {title: '设计力', desc: 'disign'},
-        // {title: '生产力', desc: 'product'},
-        // {title: '服务', desc: 'service'},
-        // {title: '保障', desc: 'hello world4'}
-      ],
+      trademarkInfo: [],
       // 新闻信息数据
       newsInfo: {
         newsImg: '../../static/images/1.jpg',
@@ -290,12 +274,20 @@ export default {
           {title: '新闻信息右下',content: '这是新闻消息右下的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'}
         ]
       },
-      containCL: '../../static/images/1.jpg',
-      seriesBG: '../../static/images/1.jpg',
+      companyData: [],
+      companyBgImg: '',
+      companyEI: '',
+      companyName: '',
+      companySlogan: '',
+      companyKeyword1: '',
+      companyKeyword2: '',
+      company_detail: '',
+      seriesBG: '',
       defaultAct: '0',
-      seriesName: '系列一',
-      seriesIntroduce: '系列介绍',
-      company_detail: 'hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666,hello world, 666',
+      seriesName: '',
+      seriesIntroduce: '',
+      seriesIntroduce2: '',
+      seriesIntroduce3: '',
       isShow: true,
       inputName: '',
       inputPhone: '',
@@ -311,9 +303,12 @@ export default {
     // 根据鼠标移动到不同的系列上，显示不同的内容信息
     showDiff: function(index) {
       this.defaultAct = index.toString();
-      this.seriesBG = this.seriesInfo[index].url;
-      this.seriesName = this.seriesInfo[index].seriesName;
-      this.seriesIntroduce = this.seriesInfo[index].seriesIntroduce;
+      this.seriesBG = this.seriesInfo[index].ImgUrl;
+      this.seriesName = this.seriesInfo[index].Name;
+        
+      this.seriesIntroduce = this.seriesInfo[index].Json;
+      this.seriesIntroduce2 = this.seriesIntroduce.split(";")[1].split("=")[1];
+      this.seriesIntroduce3 = this.seriesIntroduce.split(";")[2].split("=")[1];
     },
     zoomOut: function() {
       this.moreNewsIcon = '../../static/images/openIcon1.png';
@@ -336,6 +331,15 @@ export default {
         this.productIcons = response.body.Sub[444].Sub[445].File;
         this.productIcons2 = response.body.Sub[444].Sub[446].File;
         this.trademarkInfo = response.body.Sub[456].File;
+        this.seriesInfo = response.body.Sub[467].File;
+        this.companyData = response.body.Sub[468].File;
+        this.companyBgImg = this.companyData[0].ImgUrl;
+        this.companyEI = this.companyData[0].P1;
+        this.companyName = this.companyData[1].P2;
+        this.companySlogan = this.companyData[2].P3;
+        this.companyKeyword1 = this.companyData[3].P4;
+        this.companyKeyword2 = this.companyData[4].P5;
+        this.company_detail = this.companyData[5].P6;
       })
       .catch(function(error) {
         console.log(error);
@@ -351,6 +355,17 @@ export default {
       .catch(function(error) {
         console.log(error);
       });
+
+      // 企业新闻信息
+      // this.$http.get("https://www.ehometd.com/temporary/api/org/all.php?fc=articlelist&OrgID=1000128", {
+      // })
+      // .then(function(response) {
+      //   console.log(response);
+      //   // this.newsInfo = response.body.Sub[460].File;
+      // })
+      // .catch(function(error) {
+      //   console.log(error);
+      // });
     },
     overChangeImg: function(index) {
       this.templateSting = this.productIcons[index].ImgUrl;
