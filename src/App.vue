@@ -2,6 +2,8 @@
   <div id="app">
     <header-div></header-div>
     <router-view/>
+    <appiontment-div></appiontment-div>
+    <suspend-menu></suspend-menu>
     <footer-div></footer-div>
   </div>
 </template>
@@ -9,11 +11,15 @@
 <script>
 import headerDiv from '@/components/header'
 import footerDiv from '@/components/footer'
+import appiontmentDiv from '@/components/appiontmentDiv'
+import suspendMenu from '@/components/suspendMenu'
 export default {
   name: 'App',
   components:{
     headerDiv,
-    footerDiv
+    footerDiv,
+    appiontmentDiv,
+    suspendMenu
   }
 }
 </script>

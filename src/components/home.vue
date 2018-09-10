@@ -132,14 +132,6 @@
         </div>
         <div class="container-content">
           <div class="company-news">
-            <div class="make-an-appiontment" @click="appiontment">
-              <div class="appiontment-lt">
-                <span>立即预约</span>
-              </div>
-              <div class="appiontment-rt">
-                <img src="../assets/images/open.png" alt="">
-              </div>
-            </div>
             <div class="compay-new-list">
               <div class="news-list-lt" @mouseover="zoomOut" @mouseout="resetIcon">
                 <img :src="newsInfo.newsImg" alt="新闻图片">
@@ -240,53 +232,9 @@
                 </div>
               </div>
             </div>
-            <div class="news-menu">
-              <el-row class="tac">
-                <el-col :span="12">
-                  <el-menu default-active="2" class="el-menu-vertical-demo">
-                    <el-menu-item index="1">
-                      <template slot="title">
-                        <span><a href="#app">顶部</a></span>
-                      </template>
-                    </el-menu-item>
-                    <el-menu-item index="2">
-                      <span slot="title">预约</span>
-                    </el-menu-item>
-                    <el-menu-item index="3">
-                      <span slot="title">热线</span>
-                    </el-menu-item>
-                    <el-menu-item index="4">
-                      <span slot="title">手机端</span>
-                    </el-menu-item>
-                  </el-menu>
-                </el-col>
-              </el-row>  
-            </div>
           </div>
           <div class="btn-more news-more-btn">
             <el-button>更多</el-button>
-          </div>
-          <div class="write-info" v-if="isShow">
-            <div class="write-info-box">
-              <img src="../assets/images/close.png" alt="" class="write-info-close" @click="closeModal">
-              <div class="write-info-text">
-                <div class="write-info-list">
-                  <img src="../assets/images/events-icon2.png" alt="">
-                </div>
-                <div class="write-info-list">
-                  <el-input v-model="inputName" placeholder="请输入姓名"></el-input>
-                </div>
-                <div class="write-info-list">
-                  <el-input v-model="inputPhone" placeholder="请输入手机号"></el-input>
-                </div>
-                <div class="write-info-list">
-                  <el-input v-model="inputAddress" placeholder="请输入楼盘位置"></el-input>
-                </div>
-                <div class="write-info-list">
-                  <el-button type="primary">确定预约</el-button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>  
@@ -360,9 +308,6 @@ export default {
     this.homeInit();
   },
   methods: {
-    closeModal: function() {
-      this.isShow = !this.isShow;
-    },
     // 根据鼠标移动到不同的系列上，显示不同的内容信息
     showDiff: function(index) {
       this.defaultAct = index.toString();
@@ -375,12 +320,6 @@ export default {
     },
     resetIcon: function() {
       this.moreNewsIcon = '../../static/images/openIcon.png';
-    },
-    // 确定预约
-    appiontment: function() {
-      if(!this.isShow) {
-        this.isShow = !this.isShow;
-      }
     },
     homeInit: function() {
       

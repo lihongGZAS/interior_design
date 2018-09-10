@@ -1,0 +1,86 @@
+.appionent-div {
+  width: 100%;
+  position: fixed;
+  right: 0;
+  bottom: 70px;
+  z-index: 999;
+}
+
+/* 打开预约div */
+.make-an-appiontment {
+  display: table;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.appiontment-lt {
+  width: 30px;
+  height: 184px;
+  background: #680000;
+  color: #fff;
+  display: table-cell;
+  vertical-align: middle;
+}
+.appiontment-rt {
+  display: table-cell;
+  background: #d1021b;
+  vertical-align: middle;
+}
+.compay-new-list {
+  width: 80%;
+  height: 530px;
+  margin: 0 auto;
+  border: 1px solid blue;
+  box-sizing: border-box;
+  display: table;
+  vertical-align: middle;
+}
+
+/* 立即预约内容输入 */
+.write-info {
+  width: 100%;
+  height: 184px;
+  background: #680000;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translateX(-50%);
+  opacity: 0.6;
+}
+.write-info-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.write-info-close {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+.write-info-text {
+  width: 80%;
+  height: 120px;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  display: table;
+  text-align: center;
+  vertical-align: middle;
+}
+.write-info-list {
+  width: 14%;
+  height: 100px;
+  display: inline-block;
+  display: table-cell;
+  padding: 0px 10px;
+  vertical-align: middle;
+}
+.write-info-list img {
+  width: 100%;
+  height: 100%;
+  
+}

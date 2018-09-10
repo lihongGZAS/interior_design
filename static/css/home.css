@@ -295,7 +295,6 @@
 .trademark-info {
   width: 80%;
   height: 390px;
-  border: 1px solid red;
   position: absolute;
   display: table;
   left: 50%;
@@ -340,43 +339,10 @@
   position: relative;
 }
 
-/* 打开预约div */
-.make-an-appiontment {
-  position: absolute;
-  display: table;
-  vertical-align: middle;
-  left: 0px;
-  bottom: 30px;
-  cursor: pointer;
-}
-.appiontment-lt {
-  width: 30px;
-  height: 160px;
-  background: #0a60b9;
-  color: #fff;
-  display: table-cell;
-  vertical-align: middle;
-}
-.appiontment-rt {
-  display: table-cell;
-  background: #73c3ee;
-  vertical-align: middle;
-}
-.compay-new-list {
-  width: 80%;
-  height: 530px;
-  margin: 0 auto;
-  border: 1px solid blue;
-  box-sizing: border-box;
-  display: table;
-  vertical-align: middle;
-}
-
 /* 新闻内容栏左侧div */
 .news-list-lt {
   width: 32%;
   height: 530px;
-  border: 1px solid #66c;
   display: table-cell;
   position: relative;
   overflow: hidden;
@@ -559,68 +525,6 @@
 .hover-show-shadow:hover {
   box-shadow: 0 0px 4px #888;
 }
-
-/* 新闻信息列表右侧悬浮菜单 */
-.news-menu {
-  width: 100px;
-  height: 260px;
-  position: absolute;
-  right: 0px;
-  bottom: 14px;
-  border: 1px solid #666;
-}
-.news-menu .el-row {
-  height: 260px;
-}
-.news-menu .el-col-12 ul li {
-  height: 25%;
-  line-height: 65px;
-}
 .news-more-btn {
   margin-bottom: 80px;
-}
-.write-info {
-  width: 80%;
-  height: 184px;
-  border: 1px solid red;
-  background: #0a60b9;
-  position: absolute;
-  left: 50%;
-  bottom: 0px;
-  transform: translateX(-50%);
-  opacity: 0.6;
-}
-.write-info-box {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-.write-info-close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  cursor: pointer;
-}
-.write-info-text {
-  width: 80%;
-  height: 120px;
-  position: absolute;
-  left: 50%;
-  top: 55%;
-  transform: translate(-50%, -50%);
-  display: table;
-  text-align: center;
-  vertical-align: middle;
-}
-.write-info-list {
-  width: 14%;
-  height: 100px;
-  display: inline-block;
-  display: table-cell;
-  padding: 0px 10px;
-  vertical-align: middle;
-}
-.write-info-list img {
-  width: 100%;
-  height: 100%;
 }

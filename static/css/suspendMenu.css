@@ -1,0 +1,22 @@
+/* 新闻信息列表右侧悬浮菜单 */
+.suspend-menu {
+  width: 100px;
+  height: 260px;
+  position: fixed;
+  right: 0px;
+  bottom: 320px;
+  z-index: 999;
+}
+.suspend-menu .el-row {
+  height: 260px;
+}
+.el-col-12 {
+  width: 100%;
+}
+.suspend-menu .el-col-12 ul li {
+  height: 62px;
+  line-height: 62px;
+  border: 1px solid #666;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+}
