@@ -44,7 +44,6 @@ export default {
         }
       })
       .then(response => {
-        console.log(response);
         this.logoImg = response.body.Sub[457].File[0].ImgUrl;
       })
       .catch(function(error) {

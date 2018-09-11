@@ -2,29 +2,31 @@
   <div class="appionent-div">
     <div class="write-info" v-if="isShow">
       <div class="write-info-box">
-        <img src="../assets/images/close.png" alt="" class="write-info-close" @click="closeModal">
+        <img src="../assets/images/close1.png" alt="" class="write-info-close" @click="closeModal">
         <div class="write-info-text">
           <div class="write-info-list">
-            <img src="../assets/images/events-icon2.png" alt="">
+            <div class="write-info-first">
+              <img :src="appiontmentBg" alt="">
+            </div>
           </div>
           <div class="write-info-list">
-            <el-input v-model="inputName" placeholder="请输入姓名"></el-input>
+            <el-input v-model="inputName" placeholder="您的姓名"></el-input>
           </div>
           <div class="write-info-list">
-            <el-input v-model="inputPhone" placeholder="请输入手机号"></el-input>
+            <el-input v-model="inputPhone" placeholder="您的手机号"></el-input>
           </div>
           <div class="write-info-list">
-            <el-input v-model="inputAddress" placeholder="请输入楼盘位置"></el-input>
+            <el-input v-model="inputAddress" placeholder="楼盘名称"></el-input>
           </div>
           <div class="write-info-list">
-            <el-button>确定预约</el-button>
+            <div class="sure-apoiontment-btn">确定预约</div>
           </div>
         </div>
       </div>
     </div>
     <div class="make-an-appiontment" v-else @click="appiontment">
       <div class="appiontment-lt">
-        <span>立即预约</span>
+        <div class="appiontment-lt-txt">立即预约</div>
       </div>
       <div class="appiontment-rt">
         <img src="../assets/images/open.png" alt="">
@@ -41,8 +43,12 @@
         isShow: true,
         inputName: '',
         inputPhone: '',
-        inputAddress: ''
+        inputAddress: '',
+        appiontmentBg: ''
       }
+    },
+    mounted: function() {
+      this.getData();
     },
     methods: {
       closeModal: function() {
@@ -54,6 +60,19 @@
           this.isShow = !this.isShow;
         }
       },
+      getData: function() {
+        this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=439&Class=3", {
+          params: {
+            ID: 12345
+          }
+        })
+        .then(response => {
+          this.appiontmentBg = response.body.Sub[472].File[2].ImgUrl;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+      }
     }
   }
 </script>

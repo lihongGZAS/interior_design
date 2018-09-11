@@ -1,7 +1,6 @@
 .appionent-div {
   width: 100%;
   position: fixed;
-  right: 0;
   bottom: 70px;
   z-index: 999;
 }
@@ -13,16 +12,26 @@
   cursor: pointer;
 }
 .appiontment-lt {
-  width: 30px;
+  width: 60px;
   height: 184px;
-  background: #680000;
+  background: #fbd33e;
   color: #fff;
   display: table-cell;
   vertical-align: middle;
+  position: relative;
+}
+.appiontment-lt-txt {
+  width: 32px;
+  height: 184px;
+  position: absolute;
+  left: 14px;
+  top: 0px;
+  padding-top: 40px;
+  font-size: 20px;
 }
 .appiontment-rt {
   display: table-cell;
-  background: #d1021b;
+  background: #f7e296;
   vertical-align: middle;
 }
 .compay-new-list {
@@ -39,25 +48,26 @@
 .write-info {
   width: 100%;
   height: 184px;
-  background: #680000;
-  color: #fff;
+  color: #333;
   position: absolute;
   left: 50%;
   bottom: 0px;
   transform: translateX(-50%);
-  opacity: 0.6;
 }
 .write-info-box {
   width: 100%;
   height: 100%;
   position: relative;
+  box-shadow: 0 0 20px #999;
+  box-sizing: border-box;
+  background: #fff;
 }
 .write-info-close {
-  width: 64px;
-  height: 64px;
+  width: 24px;
+  height: 24px;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 14px;
+  top: 14px;
   cursor: pointer;
 }
 .write-info-text {
@@ -65,22 +75,37 @@
   height: 120px;
   position: absolute;
   left: 50%;
-  top: 55%;
+  top: 50%;
   transform: translate(-50%, -50%);
   display: table;
   text-align: center;
   vertical-align: middle;
 }
 .write-info-list {
-  width: 14%;
-  height: 100px;
-  display: inline-block;
+  width: 180px;
+  height: 120px;
   display: table-cell;
   padding: 0px 10px;
   vertical-align: middle;
+  position: relative;
 }
-.write-info-list img {
+.write-info-first {
+  width: 180px;
+  height: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.write-info-first img {
   width: 100%;
   height: 100%;
-  
+}
+.sure-apoiontment-btn {
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  background: #FFCE04;
+  color: #fff;
 }

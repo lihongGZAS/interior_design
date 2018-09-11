@@ -119,9 +119,9 @@
             <div class="trademark-info-list" v-for="(item,$index) in trademarkInfo" :key="$index">
               <img :src="item.ImgUrl" alt="">
               <h2>{{item.Name}}</h2>
-              <span>用品质保驾护航</span>
-              <span>用态度践行服务</span>
-              <span>用真心赢得赞赏</span>
+              <span>{{item.Json.split(";")[0].split("=")[1]}}</span>
+              <span>{{item.Json.split(";")[1].split("=")[1]}}</span>
+              <span>{{item.Json.split(";")[2].split("=")[1]}}</span>
             </div>
           </div>
         </div>
@@ -135,7 +135,7 @@
           <div class="company-news">
             <div class="compay-new-list">
               <div class="news-list-lt" @mouseover="zoomOut" @mouseout="resetIcon">
-                <img :src="newsInfo.newsImg" alt="新闻图片">
+                <img :src="newsInfo.Image" alt="新闻图片">
                 <div class="news-informartion">
                   <div class="news-info-position">
                     <div class="news-lt-catline"></div>
@@ -152,10 +152,8 @@
               <div class="news-list-ct">
                 <div class="show-newsrt-box">
                   <div class="news-ct-box1 hover-show-shadow">
-                    <div class="news-ct-title">新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行</div>
-                    <div class="news-ct-content">
-                      新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行,新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行,新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行
-                    </div>
+                    <div class="news-ct-title">{{newsInfo.Title}}</div>
+                    <div class="news-ct-content">{{newsInfo.CInfo}}</div>
                     <div class="news-ct-ctLine"></div>
                     <div class="news-date-box">
                       <div class="news-date">
@@ -168,10 +166,8 @@
                     </div>
                   </div>
                   <div class="news-ct-box2 hover-show-shadow">
-                    <div class="news-ct-title">新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行</div>
-                    <div class="news-ct-content">
-                      新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行,新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行,新闻title微信支付HTTP协议的安全性能讨论会在北京科技馆举行
-                    </div>
+                    <div class="news-ct-title">{{newsInfo.Title}}</div>
+                    <div class="news-ct-content">{{newsInfo.CInfo}}</div>
                     <div class="news-ct-ctLine"></div>
                     <div class="news-date-box">
                       <div class="news-date">
@@ -195,7 +191,7 @@
                     </div>
                   </div>
                   <div class="news-rt-txt">
-                    <div>相信你也知道，小程序最近又火起来了，这是测试信息。</div>
+                    <div class="news-rt-desc">{{newsInfo.CInfo}}</div>
                     <div class="news-date-icon news-rt-icon">
                       <img src="../assets/images/rightArrow.png" alt="">
                     </div>
@@ -210,7 +206,7 @@
                     </div>
                   </div>
                   <div class="news-rt-txt">
-                    <div>相信你也知道，小程序最近又火起来了，这是测试信息。</div>
+                    <div class="news-rt-desc">{{newsInfo.CInfo}}</div>
                     <div class="news-date-icon news-rt-icon">
                       <img src="../assets/images/rightArrow.png" alt="">
                     </div>
@@ -225,7 +221,7 @@
                     </div>
                   </div>
                   <div class="news-rt-txt">
-                    <div>相信你也知道，小程序最近又火起来了，这是测试信息。</div>
+                    <div class="news-rt-desc">{{newsInfo.CInfo}}</div>
                     <div class="news-date-icon news-rt-icon">
                       <img src="../assets/images/rightArrow.png" alt="">
                     </div>
@@ -305,10 +301,8 @@ export default {
       this.defaultAct = index.toString();
       this.seriesBG = this.seriesInfo[index].ImgUrl;
       this.seriesName = this.seriesInfo[index].Name;
-        
-      this.seriesIntroduce = this.seriesInfo[index].Json;
-      this.seriesIntroduce2 = this.seriesIntroduce.split(";")[1].split("=")[1];
-      this.seriesIntroduce3 = this.seriesIntroduce.split(";")[2].split("=")[1];
+      this.seriesIntroduce2 = this.seriesInfo[index].P2;
+      this.seriesIntroduce3 = this.seriesInfo[index].P3;
     },
     zoomOut: function() {
       this.moreNewsIcon = '../../static/images/openIcon1.png';
@@ -331,15 +325,21 @@ export default {
         this.productIcons = response.body.Sub[444].Sub[445].File;
         this.productIcons2 = response.body.Sub[444].Sub[446].File;
         this.trademarkInfo = response.body.Sub[456].File;
+        
         this.seriesInfo = response.body.Sub[467].File;
-        this.companyData = response.body.Sub[468].File;
-        this.companyBgImg = this.companyData[0].ImgUrl;
-        this.companyEI = this.companyData[0].P1;
-        this.companyName = this.companyData[1].P2;
-        this.companySlogan = this.companyData[2].P3;
-        this.companyKeyword1 = this.companyData[3].P4;
-        this.companyKeyword2 = this.companyData[4].P5;
-        this.company_detail = this.companyData[5].P6;
+        this.seriesName = this.seriesInfo[0].Name;
+        this.seriesBG = this.seriesInfo[0].ImgUrl;
+        this.seriesIntroduce2 = this.seriesInfo[0].P2;
+        this.seriesIntroduce3 = this.seriesInfo[0].P3;
+
+        this.companyData = response.body.Sub[468].File[0];
+        this.companyBgImg = this.companyData.ImgUrl;
+        this.companyEI = this.companyData.P1;
+        this.companyName = this.companyData.P2;
+        this.companySlogan = this.companyData.P3;
+        this.companyKeyword1 = this.companyData.P4;
+        this.companyKeyword2 = this.companyData.P5;
+        this.company_detail = this.companyData.P6;
       })
       .catch(function(error) {
         console.log(error);
@@ -357,15 +357,14 @@ export default {
       });
 
       // 企业新闻信息
-      // this.$http.get("https://www.ehometd.com/temporary/api/org/all.php?fc=articlelist&OrgID=1000128", {
-      // })
-      // .then(function(response) {
-      //   console.log(response);
-      //   // this.newsInfo = response.body.Sub[460].File;
-      // })
-      // .catch(function(error) {
-      //   console.log(error);
-      // });
+      this.$http.get("https://www.ehometd.com/temporary/api/org/all.php?fc=articlelist&OrgID=1000128&Release=1", {
+      })
+      .then(function(response) {
+        this.newsInfo = response.body[0];
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
     },
     overChangeImg: function(index) {
       this.templateSting = this.productIcons[index].ImgUrl;

@@ -2,24 +2,14 @@
   <div class="suspend-menu">
     <el-row class="tac">
       <el-col :span="12">
-        <el-menu default-active="2" class="el-menu-vertical-demo">
-          <el-menu-item index="1">
-            <template slot="title">
-              <span><a href="#app">顶部</a></span>
-            </template>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <span slot="title">预约</span>
-          </el-menu-item>
-          <el-menu-item index="3">
-            <span slot="title">热线</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <span slot="title">手机端</span>
+        <el-menu class="el-menu-vertical-demo">
+          <el-menu-item v-for="(item, i) in resultData" :key="i" :index="i.toString()" @mouseover.native="showIcon(i)" @mouseout.native="changeBk(i)" style="padding-left:0px">
+            <span slot="title" v-if="nowIndex === i">{{item.Name}}</span>
+            <img :src="item.ImgUrl" class="suspend-menu-icon" v-else alt="">
           </el-menu-item>
         </el-menu>
       </el-col>
-    </el-row>  
+    </el-row> 
   </div>
 </template>
 
@@ -28,7 +18,32 @@
     name: 'suspendMenu',
     data() {
       return {
-
+        resultData: [],
+        nowIndex: -1,
+      }
+    },
+    mounted: function() {
+      this.getData();
+    },
+    methods: {
+      getData: function() {
+        this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=439&Class=3", {
+          params: {
+            ID: 12345
+          }
+        })
+        .then(response => {
+          this.resultData = response.body.Sub[466].File;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+      },
+      showIcon: function(index) {
+        this.nowIndex = index;
+      },
+      changeBk: function(index) {
+        this.nowIndex = -1;
       }
     }
   }
