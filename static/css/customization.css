@@ -1,8 +1,7 @@
 .advertise-img {
   width: 100%;
   max-width: 1920px;
-  height: 300px;
-  border: 1px solid blue;
+  height: 400px;
 }
 .advertise-img img {
   width: 100%;
@@ -13,14 +12,12 @@
 /* 系列列表 */
 .series-desc {
   height: 160px;
-  border: 1px solid red;
   position: relative;
 }
 .series-lists {
   width: 80%;
   height: 50px;
   line-height: 50px;
-  border: 1px solid gray;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -33,48 +30,32 @@
 .series-span-special {
   width: 200px;
   height: 1px;
-  border: 1px solid #ccc;
   display: inline-block;
   margin: 6px 14px;
 }
 
 /* 系列图片展示 */
 .series-one-desc {
-  border: 1px solid blue;
-}
-.swiper-container {
   width: 100%;
   height: 1080px;
 }
-.swiper-slide {
-  opacity: 1;
-  overflow: hidden;
-}
-.swiper-container-img {
-  width: 100%;
-  max-width: 1920px;
-  height: 1080px;
-}
-.el-carousel__item img {
+.series-one-desc img {
   width: 100%;
   height: 100%;
-  margin: 0;
-}
-.custom-pagination {
-  bottom: 60px;
 }
 
 /* 玄关 */
 .hallway-div {
   width: 100%;
   height: 860px;
-  border: 1px solid yellowgreen;
   position: relative;
+}
+.set-icon-pos {
+  margin-right: 30px;
 }
 .hallway-desc {
   width: 260px;
   height: 300px;
-  border: 1px solid #000;
   position: absolute;
   top: 60px;
   left: 40px; 
@@ -92,7 +73,6 @@
 .hallway-img {
   width: 40%;
   height: 660px;
-  border: 1px solid blue;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -105,7 +85,6 @@
 .hallway-change-icon {
   width: 260px;
   height: 120px;
-  border: 1px solid #ccc;
   position: absolute;
   right: 40px;
   top: 200px;
@@ -119,7 +98,6 @@
 .detail-explain {
   width: 260px;
   height: 160px;
-  border: 1px solid red;
   position: absolute;
   right: 40px;
   bottom: 60px;
@@ -138,9 +116,6 @@
 }
 
 /* series two */
-.series-two-desc {
-  border: 1px solid blue;
-}
 .swiper-container2 {
   width: 100%;
   height: 1080px;

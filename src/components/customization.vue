@@ -1,32 +1,22 @@
 <template>
   <div class="customization-div">
     <div class="advertise-img">
-      <img src="" alt="全屋定制宣传图片1920*300">
+      <img :src="custommizationImg" alt="全屋定制宣传图片1920*300">
     </div>
     <div class="series-desc">
       <div class="series-lists">
         <div class="series-span-special"></div>
-        <span>系列一</span>
-        <span>系列二</span>
-        <span>系列三</span>
-        <span>系列四</span>
+        <span v-for="(item, i) in seriesName" :key="i">{{item.Name}}</span>
         <div class="series-span-special"></div>
       </div>
     </div>
     <div class="series-one-desc">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide slide1" v-for="(item, i) in seriesOne" :key="i">
-            <img class="swiper-container-img" :src="item.url" alt="">
-          </div>
-        </div>
-        <div class="pagination custom-pagination"></div>
-      </div>
+      <img :src="seriesBG" alt="各系列图片">
     </div>
     <div class="hallway-div">
       <div class="hallway-desc">
-        <h2>玄关</h2>
-        <span>hallway</span>
+        <h2>{{hallway_name}}</h2>
+        <span>{{hallway_name2}}</span>
         <p>{{hallway_introduce}}</p>
       </div>
       <div class="hallway-img">
@@ -34,113 +24,88 @@
       </div>
       <div class="hallway-change-icon">
         <div>
-          <i class="el-icon-arrow-left"></i>
+          <i class="el-icon-arrow-left set-icon-pos"></i>
           <i class="el-icon-arrow-right"></i>
         </div>
-        <span>同系列多个定制柜左右切换</span>
-      </div>
-      <div class="detail-explain">
-        <div class="detail-explain-img">
-          <img :src="series_two_detail" alt="系列细节图片">
-        </div>
-          <span>细节说明</span>
       </div>
     </div>
     <div class="series-two-desc">
-      <div class="swiper-container2">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide slide1" v-for="(item,i) in seriesTwo" :key="i">
-            <img class="swiper-container-img" :src="item.url" alt="">
-          </div>
-        </div>
-        <div class="pagination2 custom-pagination"></div>
-      </div>
+      <img :src="seriesBG2" alt="各系列图片">
     </div>
     <div class="hallway-div">
       <div class="hallway-desc">
         <h2>玄关</h2>
-        <span>hallway</span>
+        <span>{{hallway_name3}}</span>
         <p>{{hallway_introduce}}</p>
       </div>
       <div class="hallway-img">
-        <img :src="hallway_img" alt="系列样式图片">
+        <img :src="hallway_img2" alt="系列样式图片">
       </div>
       <div class="hallway-change-icon">
         <div>
-          <i class="el-icon-arrow-left"></i>
+          <i class="el-icon-arrow-left set-icon-pos"></i>
           <i class="el-icon-arrow-right"></i>
         </div>
-        <span>同系列多个定制柜左右切换</span>
-      </div>
-      <div class="detail-explain">
-        <div class="detail-explain-img">
-          <img :src="series_two_detail" alt="系列细节图片">
-        </div>
-        <span>细节说明</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { Loading } from 'element-ui';
 export default {
   name: 'customization',
   data() {
     return {
-      hallway_img: '../../static/1.jpg',
-      series_two_detail: '../../static/1.jpg',
-      hallway_introduce: '玄关介绍,玄关介绍。玄关介绍,玄关介绍。玄关介绍,玄关介绍。玄关介绍,玄关介绍。',
-      seriesOne: [
-        { url: "../../static/1.jpg" },
-        { url: "../../static/2.jpg" },
-        { url: "../../static/3.jpg" },
-        { url: "../../static/4.jpg" },
-        { url: "../../static/5.jpg" }
-      ],
-      seriesTwo: [
-        { url: "../../static/1.jpg" },
-        { url: "../../static/2.jpg" },
-        { url: "../../static/3.jpg" },
-        { url: "../../static/4.jpg" },
-        { url: "../../static/5.jpg" }
-      ],
+      custommizationImg: '',
+      hallway_img: '',
+      hallway_img2: '',
+      hallway_name: '',
+      hallway_name2: 'hello world',
+      hallway_name3: 'hello world000',
+      hallway_introduce: '',
+      series_two_detail: '',
+      seriesName: [],
+      seriesOne: [],
+      seriesTwo: [],
+      seriesInfo: [],
+      seriesBG: '',
+      seriesBG2: ''
     }
   },
   mounted: function() {
-      // 轮播插件初始化
-      var mySwiper = new Swiper(".swiper-container", {
-      pagination: ".pagination",
-      paginationClickable: true,
-      // autoplay: 5000,
-      speed: 1,
-      loop: true,
+    this.getData();
+    let loadingInstance = Loading.service({ fullscreen: true });
+    setTimeout(() => {
+      loadingInstance.close();
+    }, 1200);
+  },
+  methods: {
+    getData: function() {
+      this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=439&Class=3", {
+        params: {
+          ID: 12345
+        }
+      })
+      .then(response => {
+        this.seriesName = response.body.Sub[467].File;
+        this.custommizationImg = response.body.Sub[476].File[0].ImgUrl;
+        this.seriesOne = response.body.Sub[479].Sub[480].File;
+        this.seriesTwo = response.body.Sub[479].Sub[481].File;
 
-      onInit: function(swiper) {
-        swiperAnimateCache(swiper); //隐藏动画元素
-        swiperAnimate(swiper); //初始化完成开始动画
-      },
-      onSlideChangeEnd: function(swiper) {
-        swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
-      }
-    });
+        this.seriesInfo = response.body.Sub[467].File;
+        this.seriesBG = this.seriesInfo[0].ImgUrl;
+        this.hallway_img = this.seriesOne[0].ImgUrl;
+        this.hallway_introduce = this.seriesOne[0].P2;
+        this.hallway_name = this.seriesOne[0].Name;
 
-    // 全屋定制第二个轮播图初始化
-    var mySwiper2 = new Swiper(".swiper-container2", {
-      pagination: ".pagination2",
-      paginationClickable: true,
-      // autoplay: 5000,
-      speed: 1,
-      loop: true,
-
-      onInit: function(swiper) {
-        swiperAnimateCache(swiper); //隐藏动画元素
-        swiperAnimate(swiper); //初始化完成开始动画
-      },
-      onSlideChangeEnd: function(swiper) {
-        swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
-      }
-    });
-
+        this.hallway_img2 = this.seriesOne[1].ImgUrl;
+        this.seriesBG2 = this.seriesInfo[1].ImgUrl;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    }
   }
 }
 </script>

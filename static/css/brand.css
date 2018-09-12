@@ -2,15 +2,19 @@
 .advertise-img {
   width: 100%;
   max-width: 1920px;
-  height: 300px;
-  border: 1px solid blue;
+  height: 400px;
 }
 .advertise-img img {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
 /* company introduce */
+.brand-info-box {
+  width: 100%;
+  height: 700px;
+}
 .container-content {
   width: 100%;
   display: table;
@@ -20,8 +24,6 @@
   width: 50%;
   height: 700px;
   display: table-cell;
-  border: 1px solid red;
-  box-sizing: border-box;
 }
 .container-content-lt img {
   width: 100%;
@@ -34,8 +36,6 @@
   vertical-align: middle;
   text-align: left;
   padding: 40px;
-  border: 1px solid gray;
-  box-sizing: border-box;
 }
 .container-content-rt span {
   display: block;
@@ -79,8 +79,6 @@
   width: 50%;
   height: 700px;
   display: table-cell;
-  border: 1px solid red;
-  box-sizing: border-box;
 }
 .reserse-img-rt img {
   width: 100%;
@@ -93,8 +91,6 @@
   vertical-align: middle;
   text-align: left;
   padding: 40px;
-  border: 1px solid gray;
-  box-sizing: border-box;
 }
 .reserse-img-lt span {
   display: block;

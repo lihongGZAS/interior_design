@@ -3,7 +3,7 @@
     <div class="company-desc">
       <div class="company-desc-left">
         <div class="company-logo">
-          <h1>{{companyName}}</h1>
+          <img :src="footerLogo" alt="">
         </div>
         <div class="company-introduce">
           <p class="company-desc-txt1">{{company_desc}}</p>
@@ -41,11 +41,11 @@
     name: 'footerDiv',
     data() {
       return {
-        companyName: '蜜蜂雅居',
+        footerLogo: '',
         company_desc: '十年磨一剑，精雕细琢，专业源于专注，细节彰显实力。',
         company_desc2: '从心出发，铸就卓越，我们，只做好全屋定制。',
-        company_address: '浙江省台州市XXX镇XXX街XX号',
-        company_qrcode: '../../static/QR_code.jpg', // 模拟请求到的图片地址,动态配置的本地图片只能放在static文件夹下，
+        company_address: '',
+        company_qrcode: '', // 模拟请求到的图片地址,动态配置的本地图片只能放在static文件夹下，
         tel_phoneNumber: 88888888
       }
     },
@@ -62,7 +62,10 @@
         .then(response => {
           this.company_qrcode = response.body.Sub[472].File[1].ImgUrl;
           this.tel_phoneNumber = response.body.Sub[472].File[1].P2;
-          this.footerLogo = response.body.Sub[472].File[0].ImgUrl;
+          this.footerLogo = response.body.Sub[457].File[1].ImgUrl;
+          this.company_address = response.body.Sub[457].File[1].P2;
+          this.company_desc = response.body.Sub[457].File[1].P1.split("。")[0];
+          this.company_desc2 = response.body.Sub[457].File[1].P1.split("。")[1];
         })
         .catch(function(error) {
           console.log(error);

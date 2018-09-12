@@ -240,6 +240,7 @@
 </template>
 
 <script>
+import { Loading } from 'element-ui';
 export default {
   name: "home",
   props: ['index'],
@@ -294,6 +295,10 @@ export default {
   mounted: function() {
     // home组件初始化请求
     this.homeInit();
+    let loadingInstance = Loading.service({ fullscreen: true });
+    setTimeout(() => {
+      loadingInstance.close();
+    }, 1200);
   },
   methods: {
     // 根据鼠标移动到不同的系列上，显示不同的内容信息

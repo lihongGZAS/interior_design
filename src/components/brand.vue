@@ -3,115 +3,66 @@
     <div class="advertise-img">
       <img :src="brandImg" alt="品牌实力宣传图片1920*300">
     </div>
-    <div class="container-content">
-      <div class="container-content-lt">
-        <img :src="companyImg" alt="企业图片960*700">
+    <div class="brand-info-box" v-for="(item, i) in resultData" :key="i">
+      <div class="container-content" v-if="(i%2)===0">
+        <div class="container-content-lt">
+          <img :src="item.ImgUrl" alt="企业图片960*700">
+        </div>
+        <div class="container-content-rt">
+          <span class="company-introduce-text">{{item.P1}}</span>
+          <h2>{{item.P2}}</h2>
+          <span class="company-slogan">{{item.P3}}</span>
+          <div class="cat-line"></div>
+          <span class="keyword">{{item.P4}}</span>
+          <span class="keyword">{{item.P5}}</span>
+          <p class="company-introduce-detail">{{item.P6}}</p>
+        </div>
       </div>
-      <div class="container-content-rt">
-        <span class="company-introduce-text">企业英文介绍</span>
-        <h2>企业名</h2>
-        <span class="company-slogan">企业标语</span>
-        <div class="cat-line"></div>
-        <span class="keyword">关键字</span>
-        <span class="keyword">关键字</span>
-        <p class="company-introduce-detail">企业介绍详情：{{company_detail}}</p>
-      </div>
-    </div>
-    <div class="reverse-img-position">
-      <div class="reserse-img-lt">
-        <span class="company-introduce-text">企业介绍</span>
-        <h2>设计力</h2>
-        <span class="company-slogan">企业标语</span>
-        <div class="cat-line"></div>
-        <span class="keyword">关键字</span>
-        <span class="keyword">关键字</span>
-        <p class="company-introduce-detail">企业介绍详情：{{company_detail}}</p>
-      </div>
-      <div class="reserse-img-rt">
-        <img :src="designImg" alt="设计图片960*700">
-      </div>
-    </div>
-    <div class="container-content">
-      <div class="container-content-lt">
-        <img :src="productImg" alt="生产图片960*700">
-      </div>
-      <div class="container-content-rt">
-        <span class="company-introduce-text">企业介绍</span>
-        <h2>生产力</h2>
-        <span class="company-slogan">企业标语</span>
-        <div class="cat-line"></div>
-        <span class="keyword">关键字</span>
-        <span class="keyword">关键字</span>
-        <p class="company-introduce-detail">企业介绍详情：{{company_detail}}</p>
-      </div>
-    </div>
-    <div class="reverse-img-position">
-      <div class="reserse-img-lt">
-        <span class="company-introduce-text">企业介绍</span>
-        <h2>服务</h2>
-        <span class="company-slogan">企业标语</span>
-        <div class="cat-line"></div>
-        <span class="keyword">关键字</span>
-        <span class="keyword">关键字</span>
-        <p class="company-introduce-detail">企业介绍详情：{{company_detail}}</p>
-      </div>
-      <div class="reserse-img-rt">
-        <img :src="serviceImg" alt="服务图片960*700">
-      </div>
-    </div>
-    <div class="container-content">
-      <div class="container-content-lt">
-        <img :src="guaranteeImg" alt="保障图片960*700">
-      </div>
-      <div class="container-content-rt">
-        <span class="company-introduce-text">企业介绍</span>
-        <h2>保障</h2>
-        <span class="company-slogan">企业标语</span>
-        <div class="cat-line"></div>
-        <span class="keyword">关键字</span>
-        <span class="keyword">关键字</span>
-        <p class="company-introduce-detail">企业介绍详情：{{company_detail}}</p>
+      <div class="reverse-img-position" v-else>
+        <div class="reserse-img-lt">
+          <span class="company-introduce-text">{{item.P1}}</span>
+          <h2>{{item.P2}}</h2>
+          <span class="company-slogan">{{item.P3}}</span>
+          <div class="cat-line"></div>
+          <span class="keyword">{{item.P4}}</span>
+          <span class="keyword">{{item.P5}}</span>
+          <p class="company-introduce-detail">{{item.P6}}</p>
+        </div>
+        <div class="reserse-img-rt">
+          <img :src="item.ImgUrl" alt="设计图片960*700">
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { Loading } from 'element-ui';
 export default {
   name: "brand",
   data() {
     return {
+      resultData: [],
       brandImg: "",
-      companyImg: "",
-      designImg: "",
-      productImg: "",
-      serviceImg: "",
-      guaranteeImg: "",
-      company_detail: "公司详情介绍"
     };
   },
+  mounted: function() {
+    this.getData();
+    let loadingInstance = Loading.service({ fullscreen: true });
+    setTimeout(() => {
+      loadingInstance.close();
+    }, 1200);
+  },
   methods: {
-    init: function() {
-      // get 请求
-      $http.get("/user", {
+    getData: function() {
+      this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=439&Class=3", {
         params: {
           ID: 12345
         }
       })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-      // post请求
-      $http.post("/user", {
-        firstName: "Fred",
-        lastName: "Flintstone"
-      })
-      .then(function(response) {
-        console.log(response);
+      .then(response => {
+        this.resultData = response.body.Sub[473].File;
+        this.brandImg = response.body.Sub[475].File[0].ImgUrl;
       })
       .catch(function(error) {
         console.log(error);

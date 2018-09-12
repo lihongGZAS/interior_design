@@ -1,8 +1,7 @@
 .advertise-img {
   width: 100%;
   max-width: 1920px;
-  height: 300px;
-  border: 1px solid blue;
+  height: 400px;
 }
 .advertise-img img {
   width: 100%;
@@ -14,6 +13,17 @@
   overflow: hidden;
   display: inline-block;
   margin-top: 50px;
+  animation:mymove 2.2s infinite;
+}
+@keyframes mymove {
+  from {transform: translateY(0px)}
+  50% {transform: translateY(14px)}
+  from {transform: translateY(0px)}
+}
+@-webkit-keyframes mymove {
+  from {transform: translateY(0px)}
+  50% {transform: translateY(14px)}
+  from {transform: translateY(0px)}
 }
 .goods-names-picture {
   float: left;
@@ -22,8 +32,6 @@
 .goods-picture {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  border: 1px solid #999;
   position: relative;
 }
 .goods-picture-box {
@@ -44,7 +52,7 @@
   width: 100%;
 }
 .style-list-intro {
-  width: 90%;
+  width: 70%;
   margin: 0 auto;
   padding: 10px;
 }
@@ -60,10 +68,10 @@
   box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
 }
 .el-card:hover {
-  -webkit-box-shadow: 0 20px 6px #999;
-  -moz-box-shadow: 0 20px 6px #999;
-  -o-box-shadow: 0 20px 6px #999;
-  box-shadow: 0 20px 6px #999;
+  -webkit-box-shadow: 0 20px 40px #e5e5e5;
+  -moz-box-shadow: 0 20px 40px #e5e5e5;
+  -o-box-shadow: 0 20px 40px #e5e5e5;
+  box-shadow: 0 20px 40px #e5e5e5;
   -webkit-transform: translateY(-10px);
   -moz-transform: translateY(-10px);
   -o-transform: translateY(-10px);
@@ -81,8 +89,21 @@
   height: 50px;
   border-radius: 5px;
 }
+.series-common-style {
+  display: block;
+}
+.series-list-name {
+  font-size: 20px;
+  color: #333;
+  margin-top: 14px;
+}
+.series-list-desc {
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
+}
 .image {
   width: 100%;
-  height: 530px;
+  height: 360px;
   display: block;
 }
