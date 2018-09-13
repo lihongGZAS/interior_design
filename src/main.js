@@ -12,6 +12,9 @@ Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.prototype.$http = axios; // 通过原型链的方式可以在任何组件下调用axios
 Vue.use(vueResource);
+router.afterEach((to,from,next) => {
+  window.scrollTo(0,0);
+})
 
 /* eslint-disable no-new */
 new Vue({

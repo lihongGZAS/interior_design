@@ -1,13 +1,13 @@
 <template>
   <div class="product-div">
     <div class="advertise-img">
-      <img :src="productTopImg" alt="产品宣传图片1920*300">
+      <img :src="productTopImg" alt="">
     </div>
     <div class="goods-show-list">
       <div class="goods-names-picture" v-for="(item, i) in productIcons" :key="i">
         <div class="goods-picture">
           <div class="goods-picture-box" @mouseover="overChangeImg(i)" @mouseout="leaveChangeImg(i)">
-            <img :src="item.ImgUrl" alt="橱柜图片">
+            <img :src="item.ImgUrl" alt="">
           </div>
         </div>
         <span>{{item.Name}}</span>
@@ -60,6 +60,7 @@ export default {
       .then(response => {
         this.productIcons = response.body.Sub[444].Sub[445].File;
         this.productIcons2 = response.body.Sub[444].Sub[446].File;
+        this.productIcons[0] = this.productIcons2[0];
         this.productTopImg = response.body.Sub[474].File[0].ImgUrl;
       })
       .catch(function(error) {

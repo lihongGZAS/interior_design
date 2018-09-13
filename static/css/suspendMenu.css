@@ -2,6 +2,7 @@
 .suspend-menu {
   width: 64px;
   height: 260px;
+  color: #680000;
   position: fixed;
   right: 0px;
   bottom: 290px;
@@ -18,10 +19,11 @@
   height: 62px;
   line-height: 62px;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid #680000;
   border-radius: 8px;
   box-sizing: border-box;
   margin-bottom: 2px;
+  background: #fff;
 }
 .el-menu-item {
   padding: 0px;
@@ -29,4 +31,7 @@
 .suspend-menu-icon {
   width: 70%;
   height: 70%;
+}
+.el-menu {
+  background: none; 
 }

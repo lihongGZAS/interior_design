@@ -12,13 +12,11 @@
         <div class="home-events-box" style="min-height:30px;">
           <div class="home-events-box-wrapper" style="min-height:30px;">
             <div class="home-events-box-item" v-for="(item, i) in processImgs" :key="i">
-              <a href="#" target="_blank">
-                <i>
-                  <img :src="item.ImgUrl" alt="">
-                  <img :src="item.ImgUrl" alt="">
-                </i>
-                <h2>{{item.Name}}</h2>
-              </a>
+              <i>
+                <img :src="item.ImgUrl" alt="">
+                <img :src="item.ImgUrl" alt="">
+              </i>
+              <h2>{{item.Name}}</h2>
             </div>
           </div>
         </div>
@@ -28,7 +26,7 @@
       <div class="home-container-list">
         <div class="container-title">
           <h3>——  企业介绍  ——</h3>
-          <span>英文</span>
+          <span>Company Profile</span>
         </div>
         <div class="container-content">
           <div class="container-content-lt">
@@ -48,7 +46,7 @@
       <div class="home-container-list">
         <div class="container-title">
           <h3>——  全屋定制  ——</h3>
-          <span>英文</span>
+          <span>Whole House Custom</span>
         </div>
         <div class="container-content">
           <div class="container-content-lt1">
@@ -63,7 +61,9 @@
             </el-row>  
           </div>
           <div class="container-content-ct1">
-            <img :src="seriesBG" alt="">
+            <router-link to="/customization">
+              <img :src="seriesBG" alt="">
+            </router-link>
           </div>
           <div class="container-content-rt1">
             <h2>{{seriesName}}</h2>
@@ -76,7 +76,7 @@
       <div class="home-container-list">
         <div class="container-title">
           <h3>——  产品  ——</h3>
-          <span>英文</span>
+          <span>Product</span>
         </div>
         <div class="container-content">
           <div class="goods-show-list">
@@ -92,7 +92,7 @@
           <div class="style-list">
             <div class="style-list-intro">
               <el-row class="series-style-list">
-                <el-col :span='8' v-for="(item, i) in productImgs" :key="i">
+                <el-col :span='8' v-for="(item, i) in replaceProductImgs" :key="i">
                   <el-card :body-style="{ padding: '34px' }">
                     <img :src="item.ImgUrl" class="image">
                     <div style="padding: 14px;">
@@ -112,9 +112,10 @@
       <div class="home-container-list">
         <div class="container-title">
           <h3>——  品牌实力  ——</h3>
-          <span>英文</span>
+          <span>Brand Strength</span>
         </div>
         <div class="container-content trademark">
+          <img :src="tradeBgImg" alt="" class="trade-bg-img">
           <div class="trademark-info">
             <div class="trademark-info-list" v-for="(item,$index) in trademarkInfo" :key="$index">
               <img :src="item.ImgUrl" alt="">
@@ -129,13 +130,13 @@
       <div class="home-container-list news-list-div">
         <div class="container-title">
           <h3>——  新闻资讯  ——</h3>
-          <span>news</span>
+          <span>News</span>
         </div>
         <div class="container-content">
           <div class="company-news">
             <div class="compay-new-list">
               <div class="news-list-lt" @mouseover="zoomOut" @mouseout="resetIcon">
-                <img :src="newsInfo.Image" alt="新闻图片">
+                <img :src="newsBgImg" alt="新闻图片">
                 <div class="news-informartion">
                   <div class="news-info-position">
                     <div class="news-lt-catline"></div>
@@ -253,24 +254,18 @@ export default {
       productIcons: [],
       productIcons2: [],
       productImgs: [],
+      replaceProductImgs: [],
       // 个系列对应的数据
       seriesInfo: [],
 
       // 品牌数据
       trademarkInfo: [],
+      tradeBgImg: '',
+
       // 新闻信息数据
-      newsInfo: {
-        newsImg: '../../static/images/1.jpg',
-        newsText1: [
-          {title: '新闻信息左上',content: '这是新闻消息左上的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'},
-          {title: '新闻信息左下',content: '这是新闻消息左下的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'}
-        ],
-        newsText2: [
-          {title: '新闻信息右上',content: '这是新闻消息右上的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'},
-          {title: '新闻信息右中',content: '这是新闻消息右中的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'},
-          {title: '新闻信息右下',content: '这是新闻消息右下的内容部分，今天下午发生一场杀人事件',newsDate: '2018-09-04'}
-        ]
-      },
+      newsInfo: {},
+      newsBgImg: '',
+
       companyData: [],
       companyBgImg: '',
       companyEI: '',
@@ -279,12 +274,14 @@ export default {
       companyKeyword1: '',
       companyKeyword2: '',
       company_detail: '',
+
       seriesBG: '',
       defaultAct: '0',
       seriesName: '',
       seriesIntroduce: '',
       seriesIntroduce2: '',
       seriesIntroduce3: '',
+
       isShow: true,
       inputName: '',
       inputPhone: '',
@@ -323,13 +320,16 @@ export default {
         }
       })
       .then(response => {
-        // console.log(response);
+        console.log(response);
         this.lunboUrls = response.body.Sub[441].File;
         this.processImgs = response.body.Sub[443].File;
         // 
         this.productIcons = response.body.Sub[444].Sub[445].File;
         this.productIcons2 = response.body.Sub[444].Sub[446].File;
+        this.productIcons[0] = this.productIcons2[0];
+
         this.trademarkInfo = response.body.Sub[456].File;
+        this.tradeBgImg = response.body.Sub[472].File[0].ImgUrl;
         
         this.seriesInfo = response.body.Sub[467].File;
         this.seriesName = this.seriesInfo[0].Name;
@@ -345,6 +345,8 @@ export default {
         this.companyKeyword1 = this.companyData.P4;
         this.companyKeyword2 = this.companyData.P5;
         this.company_detail = this.companyData.P6;
+
+        this.newsBgImg = response.body.Sub[472].File[3].ImgUrl;
       })
       .catch(function(error) {
         console.log(error);
@@ -356,6 +358,9 @@ export default {
       .then(function(response) {
         // console.log(response);
         this.productImgs = response.body.Sub[460].File;
+        for(let i=0; i<6; i++) {
+          this.replaceProductImgs.push(this.productImgs[i]);
+        }
       })
       .catch(function(error) {
         console.log(error);

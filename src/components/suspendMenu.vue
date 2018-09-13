@@ -3,7 +3,7 @@
     <el-row class="tac">
       <el-col :span="12">
         <el-menu class="el-menu-vertical-demo">
-          <el-menu-item v-for="(item, i) in resultData" :key="i" :index="i.toString()" @mouseover.native="showIcon(i)" @mouseout.native="changeBk(i)" style="padding-left:0px">
+          <el-menu-item v-for="(item, i) in resultData" :key="i" :index="i.toString()" @mouseover.native="showIcon(i)" @mouseout.native="changeBk(i)" @click="goTop(i)" style="padding-left:0px">
             <span slot="title" v-if="nowIndex === i">{{item.Name}}</span>
             <img :src="item.ImgUrl" class="suspend-menu-icon" v-else alt="">
           </el-menu-item>
@@ -44,6 +44,11 @@
       },
       changeBk: function(index) {
         this.nowIndex = -1;
+      },
+      goTop: function(index) {
+        if(this.resultData[index].Name === "顶部") {
+          scroll(0,0);
+        }
       }
     }
   }

@@ -1,22 +1,22 @@
 <template>
   <div class="customization-div">
     <div class="advertise-img">
-      <img :src="custommizationImg" alt="全屋定制宣传图片1920*300">
+      <img :src="custommizationImg" alt="">
     </div>
     <div class="series-desc">
       <div class="series-lists">
         <div class="series-span-special"></div>
-        <span v-for="(item, i) in seriesName" :key="i">{{item.Name}}</span>
+        <span v-for="(item, i) in seriesName" :key="i" @click="changeSeriesImg(i)">{{item.Name}}</span>
         <div class="series-span-special"></div>
       </div>
     </div>
     <div class="series-one-desc">
-      <img :src="seriesBG" alt="各系列图片">
+      <img :src="seriesBG" alt="">
     </div>
     <div class="hallway-div">
       <div class="hallway-desc">
         <h2>{{hallway_name}}</h2>
-        <span>{{hallway_name2}}</span>
+        <span>{{hallway_desc}}</span>
         <p>{{hallway_introduce}}</p>
       </div>
       <div class="hallway-img">
@@ -24,8 +24,8 @@
       </div>
       <div class="hallway-change-icon">
         <div>
-          <i class="el-icon-arrow-left set-icon-pos"></i>
-          <i class="el-icon-arrow-right"></i>
+          <i class="el-icon-arrow-left set-icon-pos" @click="preImg"></i>
+          <i class="el-icon-arrow-right"  @click="nextImg"></i>
         </div>
       </div>
     </div>
@@ -34,17 +34,17 @@
     </div>
     <div class="hallway-div">
       <div class="hallway-desc">
-        <h2>玄关</h2>
-        <span>{{hallway_name3}}</span>
-        <p>{{hallway_introduce}}</p>
+        <h2>{{hallway_name2}}</h2>
+        <span>{{hallway_desc2}}</span>
+        <p>{{hallway_introduce2}}</p>
       </div>
       <div class="hallway-img">
         <img :src="hallway_img2" alt="系列样式图片">
       </div>
       <div class="hallway-change-icon">
         <div>
-          <i class="el-icon-arrow-left set-icon-pos"></i>
-          <i class="el-icon-arrow-right"></i>
+          <i class="el-icon-arrow-left set-icon-pos" @click="prePic"></i>
+          <i class="el-icon-arrow-right" @click="nextPic"></i>
         </div>
       </div>
     </div>
@@ -59,18 +59,24 @@ export default {
     return {
       custommizationImg: '',
       hallway_img: '',
-      hallway_img2: '',
       hallway_name: '',
-      hallway_name2: 'hello world',
-      hallway_name3: 'hello world000',
+      hallway_desc: 'hello world',
       hallway_introduce: '',
+
+      hallway_img2: '',
+      hallway_name2: '',
+      hallway_desc2: 'nice to meet you',
+      hallway_introduce2: '',
+
       series_two_detail: '',
       seriesName: [],
       seriesOne: [],
       seriesTwo: [],
       seriesInfo: [],
       seriesBG: '',
-      seriesBG2: ''
+      seriesBG2: '',
+      imgIndex: 0,
+      imgIndex2: 1
     }
   },
   mounted: function() {
@@ -99,12 +105,53 @@ export default {
         this.hallway_introduce = this.seriesOne[0].P2;
         this.hallway_name = this.seriesOne[0].Name;
 
-        this.hallway_img2 = this.seriesOne[1].ImgUrl;
         this.seriesBG2 = this.seriesInfo[1].ImgUrl;
+        this.hallway_img2 = this.seriesOne[1].ImgUrl;
+        this.hallway_introduce2 = this.seriesOne[1].P2;
+        this.hallway_name2 = this.seriesOne[1].Name;
       })
       .catch(function(error) {
         console.log(error);
       });
+    },
+    changeSeriesImg: function(index) {
+      this.seriesBG = this.seriesInfo[index].ImgUrl;
+    },
+    preImg: function() {
+      this.imgIndex--;
+      if(this.imgIndex < 0) {
+        this.imgIndex = this.seriesOne.length-1;
+      }
+      this.hallway_img = this.seriesOne[this.imgIndex].ImgUrl;
+      this.hallway_introduce = this.seriesOne[this.imgIndex].P2;
+      this.hallway_name = this.seriesOne[this.imgIndex].Name;
+    },
+    nextImg: function() {
+      this.imgIndex++;
+      if(this.imgIndex > (this.seriesOne.length-1)) {
+        this.imgIndex = 0;
+      }
+      this.hallway_img = this.seriesOne[this.imgIndex].ImgUrl;
+      this.hallway_introduce = this.seriesOne[this.imgIndex].P2;
+      this.hallway_name = this.seriesOne[this.imgIndex].Name;
+    },
+    prePic: function() {
+      this.imgIndex2--;
+      if(this.imgIndex2 < 0) {
+        this.imgIndex2 = this.seriesOne.length-1;
+      }
+      this.hallway_img2 = this.seriesOne[this.imgIndex2].ImgUrl;
+      this.hallway_introduce2 = this.seriesOne[this.imgIndex2].P2;
+      this.hallway_name2 = this.seriesOne[this.imgIndex2].Name;
+    },
+    nextPic: function() {
+      this.imgIndex2++;
+      if(this.imgIndex2 > (this.seriesOne.length-1)) {
+        this.imgIndex2 = 0;
+      }
+      this.hallway_img2 = this.seriesOne[this.imgIndex2].ImgUrl;
+      this.hallway_introduce2 = this.seriesOne[this.imgIndex2].P2;
+      this.hallway_name2 = this.seriesOne[this.imgIndex2].Name;
     }
   }
 }

@@ -13,17 +13,6 @@
   overflow: hidden;
   display: inline-block;
   margin-top: 50px;
-  animation:mymove 2.2s infinite;
-}
-@keyframes mymove {
-  from {transform: translateY(0px)}
-  50% {transform: translateY(14px)}
-  from {transform: translateY(0px)}
-}
-@-webkit-keyframes mymove {
-  from {transform: translateY(0px)}
-  50% {transform: translateY(14px)}
-  from {transform: translateY(0px)}
 }
 .goods-names-picture {
   float: left;

@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="make-an-appiontment" v-else @click="appiontment">
+    <div class="make-an-appiontment" @click="appiontment" v-else>
       <div class="appiontment-lt">
         <div class="appiontment-lt-txt">立即预约</div>
       </div>

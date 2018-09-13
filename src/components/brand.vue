@@ -1,12 +1,12 @@
 <template>
   <div class="brand-div">
     <div class="advertise-img">
-      <img :src="brandImg" alt="品牌实力宣传图片1920*300">
+      <img :src="brandImg" alt="">
     </div>
     <div class="brand-info-box" v-for="(item, i) in resultData" :key="i">
       <div class="container-content" v-if="(i%2)===0">
         <div class="container-content-lt">
-          <img :src="item.ImgUrl" alt="企业图片960*700">
+          <img :src="item.ImgUrl" alt="">
         </div>
         <div class="container-content-rt">
           <span class="company-introduce-text">{{item.P1}}</span>

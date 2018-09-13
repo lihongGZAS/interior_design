@@ -26,10 +26,10 @@
     </div>
     <div class="menu-text">
       <div class="footer-menu">
-        <span>首页</span>
-        <span>全屋定制</span>
-        <span>产品</span>
-        <span>品牌实力</span>
+        <span><router-link to="/home">首页</router-link></span>
+        <span><router-link to="/customization">全屋定制</router-link></span>
+        <span><router-link to="/product">产品</router-link></span>
+        <span><router-link to="/brand">品牌</router-link></span>
       </div>
       <div class="copyright">版权说明:Copyright [dates] by [author/owner]</div>
     </div>
