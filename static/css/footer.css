@@ -10,19 +10,16 @@
 .company-desc-left {
   width: 30%;
   position: absolute;
-  left: 150px;
+  left: 15%;
   top: 60px;
 }
 .company-logo {
   width: 130px;
   height: 60px;
   line-height: 60px;
+  padding: 10px 20px 10px 0;
   color: #777;
   text-align: left;
-}
-.company-logo img {
-  width: 100%;
-  height: 100%;
 }
 .company-desc-txt1, .company-desc-txt1 {
   margin: 20px 0px;
@@ -41,11 +38,11 @@
   margin-top: 40px;
 }
 .company-desc-right {
-  width: 220px;
+  width: 140px;
   height: 180px;
   position: absolute;
   top: 60px;
-  right: 150px;
+  right: 15%;
 }
 .company-qrcode {
   width: 140px;
@@ -60,7 +57,6 @@
   color: #fff;
   margin-top: 14px;
   font-size: 18px;
-  padding-right: 80px;
 }
 .company-tel-phone {
   margin-top: 10px;
@@ -88,6 +84,9 @@
   text-align: center;
   display: inline-block;
   padding: 0;
+}
+.footer-menu a {
+  color: #333;
 }
 .copyright {
   position: absolute;

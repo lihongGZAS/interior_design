@@ -6,45 +6,28 @@
     <div class="series-desc">
       <div class="series-lists">
         <div class="series-span-special"></div>
-        <span v-for="(item, i) in seriesName" :key="i" @click="changeSeriesImg(i)">{{item.Name}}</span>
+        <span v-for="(item, i) in seriesData" :key="i" @click="changeSeriesImg(i)">{{item.Name}}</span>
         <div class="series-span-special"></div>
       </div>
     </div>
-    <div class="series-one-desc">
-      <img :src="seriesBG" alt="">
-    </div>
-    <div class="hallway-div">
-      <div class="hallway-desc">
-        <h2>{{hallway_name}}</h2>
-        <span>{{hallway_desc}}</span>
-        <p>{{hallway_introduce}}</p>
+    <div class="series-list-box" v-for="(item, i) in seriesData" :key="i">
+      <div class="series-one-desc">
+        <img :src="item.ImgUrl" alt="">
       </div>
-      <div class="hallway-img">
-        <img :src="hallway_img" alt="系列样式图片">
-      </div>
-      <div class="hallway-change-icon">
-        <div>
-          <i class="el-icon-arrow-left set-icon-pos" @click="preImg"></i>
-          <i class="el-icon-arrow-right"  @click="nextImg"></i>
+      <div class="hallway-div">
+        <div class="hallway-desc">
+          <h2>{{hallway_name}}</h2>
+          <span>{{hallway_desc}}</span>
+          <p>{{hallway_introduce}}</p>
         </div>
-      </div>
-    </div>
-    <div class="series-two-desc">
-      <img :src="seriesBG2" alt="各系列图片">
-    </div>
-    <div class="hallway-div">
-      <div class="hallway-desc">
-        <h2>{{hallway_name2}}</h2>
-        <span>{{hallway_desc2}}</span>
-        <p>{{hallway_introduce2}}</p>
-      </div>
-      <div class="hallway-img">
-        <img :src="hallway_img2" alt="系列样式图片">
-      </div>
-      <div class="hallway-change-icon">
-        <div>
-          <i class="el-icon-arrow-left set-icon-pos" @click="prePic"></i>
-          <i class="el-icon-arrow-right" @click="nextPic"></i>
+        <div class="hallway-img">
+          <img :src="hallway_img" alt="系列样式图片">
+        </div>
+        <div class="hallway-change-icon">
+          <div>
+            <i class="el-icon-arrow-left set-icon-pos" @click="preImg"></i>
+            <i class="el-icon-arrow-right"  @click="nextImg"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -69,7 +52,7 @@ export default {
       hallway_introduce2: '',
 
       series_two_detail: '',
-      seriesName: [],
+      seriesData: [],
       seriesOne: [],
       seriesTwo: [],
       seriesInfo: [],
@@ -94,7 +77,8 @@ export default {
         }
       })
       .then(response => {
-        this.seriesName = response.body.Sub[467].File;
+        console.log(response)
+        this.seriesData = response.body.Sub[467].File;
         this.custommizationImg = response.body.Sub[476].File[0].ImgUrl;
         this.seriesOne = response.body.Sub[479].Sub[480].File;
         this.seriesTwo = response.body.Sub[479].Sub[481].File;

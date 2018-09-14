@@ -82,7 +82,7 @@
           <div class="goods-show-list">
             <div class="goods-names-picture" v-for="(item, i) in productIcons" :key="i">
               <div class="goods-picture">
-                <div class="goods-picture-box" @mouseover="overChangeImg(i)" @mouseout="leaveChangeImg(i)">
+                <div class="goods-picture-box" @mouseover="overChangeImg(i)" @mouseout="leaveChangeImg(i)" @click="changeSeries(i)">
                   <img :src="item.ImgUrl" alt="橱柜图片">
                 </div>
               </div>
@@ -132,7 +132,7 @@
           <h3>——  新闻资讯  ——</h3>
           <span>News</span>
         </div>
-        <div class="container-content">
+        <div class="container-content container-content-news">
           <div class="company-news">
             <div class="compay-new-list">
               <div class="news-list-lt" @mouseover="zoomOut" @mouseout="resetIcon">
@@ -251,8 +251,14 @@ export default {
       lunboUrls: [],
       processImgs: [],
       templateSting: '',
+
       productIcons: [],
+      productIcons11: [],
       productIcons2: [],
+      productFlag: true,
+      lastIndex: 0,
+      templateIcon: {},
+      productAllImgs: [],
       productImgs: [],
       replaceProductImgs: [],
       // 个系列对应的数据
@@ -323,10 +329,14 @@ export default {
         console.log(response);
         this.lunboUrls = response.body.Sub[441].File;
         this.processImgs = response.body.Sub[443].File;
+
+
         // 
         this.productIcons = response.body.Sub[444].Sub[445].File;
+        this.productIcons11 = JSON.parse(JSON.stringify(this.productIcons)); // 深拷贝获取初始productIcons的数据
         this.productIcons2 = response.body.Sub[444].Sub[446].File;
-        this.productIcons[0] = this.productIcons2[0];
+        this.templateIcon = this.productIcons[0]; // 默认获取productIcons的第一个对象
+        this.productIcons[0] = this.productIcons2[0]; // 设置第一个系列图标高亮显示
 
         this.trademarkInfo = response.body.Sub[456].File;
         this.tradeBgImg = response.body.Sub[472].File[0].ImgUrl;
@@ -356,8 +366,9 @@ export default {
       this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=459&Class=2", {
       })
       .then(function(response) {
-        // console.log(response);
-        this.productImgs = response.body.Sub[460].File;
+        console.log(response);
+        this.productAllImgs = response.body.Sub; // 存储所有图片的对象
+        this.productImgs = response.body.Sub[460].File; // 初始化获取第一个key的图片信息
         for(let i=0; i<6; i++) {
           this.replaceProductImgs.push(this.productImgs[i]);
         }
@@ -376,20 +387,49 @@ export default {
         console.log(error);
       });
     },
+    // 鼠标移动到系列图标上方改变图标
     overChangeImg: function(index) {
+      
       this.templateSting = this.productIcons[index].ImgUrl;
-      // this.productIcons2.forEach((key, value) => {
-        
-      // });
       for(const item of this.productIcons2) {
         if(item.Name === this.productIcons[index].Name) {
           this.productIcons[index].ImgUrl = item.ImgUrl;
         }
       }
-      // this.productIcons[index].ImgUrl = this.productIcons2[index].ImgUrl;
     },
+    // 鼠标离开系列图标恢复原来的图标
     leaveChangeImg: function(index) {
-      this.productIcons[index].ImgUrl = this.templateSting;
+      console.log('leave....');
+      if(index !== this.lastIndex && this.productFlag){ // 如果当前鼠标移动不是上次点击的图标，则鼠标离开后还原之前的图标
+        this.productIcons[index].ImgUrl = this.templateSting;
+      }
+    },
+    // 点击不同系列图标切换不同系列的图片
+    changeSeries: function(index) {
+      this.productFlag = false;
+      if(index !== this.lastIndex) {
+        this.productIcons[this.lastIndex] = this.templateIcon; // 上一个高亮的图标还原回去
+        this.productIcons[index] = this.productIcons2[index]; // 当前被点击图标切换成高亮图标
+
+        this.templateIcon = this.productIcons11[index]; // 保存新的被替代图标
+
+        this.productImgs = [];
+        this.replaceProductImgs = [];
+        for (let i in this.productAllImgs) {
+          if (this.productIcons[index].Name === this.productAllImgs[i].Name) {
+            this.productImgs = this.productAllImgs[i].File; // 获取点击的那个系列的图片
+            if(this.productImgs.length >= 6) {
+              for(let i=0; i<6; i++) {
+                this.replaceProductImgs.push(this.productImgs[i]);
+              }
+            }
+            else {
+              this.replaceProductImgs = this.productImgs;
+            }
+          }
+        }
+        this.lastIndex = index; // 改变上次高亮显示图标下标值
+      }
     }
   },
   watch: {
