@@ -20,16 +20,9 @@
 }
 .goods-picture {
   width: 100px;
-  height: 100px;
-  position: relative;
 }
 .goods-picture-box {
-  width: 60%;
-  height: 60%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
 }
 .goods-picture-box img {
   width: 100%;

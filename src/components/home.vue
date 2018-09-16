@@ -326,7 +326,8 @@ export default {
       .then(response => {
         this.lunboUrls = response.body.Sub[441].File;
         this.processImgs = response.body.Sub[443].File;
-        // 
+        
+        // 产品块icon及image数据
         this.productIcons = response.body.Sub[444].Sub[445].File;
         this.productIcons2 = response.body.Sub[444].Sub[446].File;
         this.productIcons11 = JSON.parse(JSON.stringify(this.productIcons)); // 深拷贝获取初始productIcons的数据
