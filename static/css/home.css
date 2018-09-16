@@ -27,11 +27,11 @@
 }
 .home-events-box-item i{
   top: 30px;
-  left: 12px;
+  left: -10px;
 }
 .home-events-box-item h2 {
   position: absolute;
-  left: 110px;
+  left: 86px;
   top: 48px;
 }
 
@@ -192,7 +192,7 @@
   animation:mymove 2.2s infinite;
   margin-bottom: 40px;
 }
- @keyframes mymove {
+@keyframes mymove {
   from {transform: translateY(0px)}
   50% {transform: translateY(14px)}
   from {transform: translateY(0px)}
@@ -208,16 +208,9 @@
 }
 .goods-picture {
   width: 100px;
-  height: 100px;
-  position: relative;
 }
 .goods-picture-box {
-  width: 60%;
-  height: 60%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
 }
 .goods-picture-box img {
   width: 100%;

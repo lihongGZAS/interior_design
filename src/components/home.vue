@@ -80,13 +80,13 @@
         </div>
         <div class="container-content">
           <div class="goods-show-list">
-            <div class="goods-names-picture" v-for="(item, i) in productIcons" :key="i">
-              <div class="goods-picture">
-                <div class="goods-picture-box" @mouseover="overChangeImg(i)" @mouseout="leaveChangeImg(i)" @click="changeSeries(i)">
+            <div class="goods-names-picture" v-for="(item, i) in productIcons11" :key="i">
+              <div class="goods-picture" @mouseenter="enterChangeImg(i, $event)" @mouseleave="leaveChangeImg(i, $event)" @click="changeSeries(i)">
+                <div class="goods-picture-box">
                   <img :src="item.ImgUrl" alt="橱柜图片">
                 </div>
+                <span>{{item.Name}}</span>
               </div>
-              <span>{{item.Name}}</span>
             </div>
           </div>
           <div class="style-list">
@@ -250,14 +250,12 @@ export default {
       // 轮播图片数据
       lunboUrls: [],
       processImgs: [],
-      templateSting: '',
 
       productIcons: [],
       productIcons11: [],
       productIcons2: [],
       productFlag: true,
       lastIndex: 0,
-      templateIcon: {},
       productAllImgs: [],
       productImgs: [],
       replaceProductImgs: [],
@@ -326,17 +324,13 @@ export default {
         }
       })
       .then(response => {
-        console.log(response);
         this.lunboUrls = response.body.Sub[441].File;
         this.processImgs = response.body.Sub[443].File;
-
-
         // 
         this.productIcons = response.body.Sub[444].Sub[445].File;
-        this.productIcons11 = JSON.parse(JSON.stringify(this.productIcons)); // 深拷贝获取初始productIcons的数据
         this.productIcons2 = response.body.Sub[444].Sub[446].File;
-        this.templateIcon = this.productIcons[0]; // 默认获取productIcons的第一个对象
-        this.productIcons[0] = this.productIcons2[0]; // 设置第一个系列图标高亮显示
+        this.productIcons11 = JSON.parse(JSON.stringify(this.productIcons)); // 深拷贝获取初始productIcons的数据
+        this.productIcons11[0] = this.productIcons2[0]; // 设置第一个系列图标高亮显示
 
         this.trademarkInfo = response.body.Sub[456].File;
         this.tradeBgImg = response.body.Sub[472].File[0].ImgUrl;
@@ -366,7 +360,6 @@ export default {
       this.$http.get("https://www.ehometd.com/temporary/api/other/all.php?fc=bianlifile&FID=459&Class=2", {
       })
       .then(function(response) {
-        console.log(response);
         this.productAllImgs = response.body.Sub; // 存储所有图片的对象
         this.productImgs = response.body.Sub[460].File; // 初始化获取第一个key的图片信息
         for(let i=0; i<6; i++) {
@@ -388,30 +381,33 @@ export default {
       });
     },
     // 鼠标移动到系列图标上方改变图标
-    overChangeImg: function(index) {
-      
-      this.templateSting = this.productIcons[index].ImgUrl;
-      for(const item of this.productIcons2) {
-        if(item.Name === this.productIcons[index].Name) {
-          this.productIcons[index].ImgUrl = item.ImgUrl;
-        }
-      }
+    enterChangeImg: function(index, event) {
+      event.cancelBubble = true;
+      this.productIcons11 = [];
+      this.productIcons11 = JSON.parse(JSON.stringify(this.productIcons));
+      this.productIcons11[index] = this.productIcons2[index];
     },
     // 鼠标离开系列图标恢复原来的图标
-    leaveChangeImg: function(index) {
-      console.log('leave....');
+    leaveChangeImg: function(index,event) {
+      event.cancelBubble = true;
       if(index !== this.lastIndex && this.productFlag){ // 如果当前鼠标移动不是上次点击的图标，则鼠标离开后还原之前的图标
-        this.productIcons[index].ImgUrl = this.templateSting;
+        this.productIcons11 = [];
+        this.productIcons11 = JSON.parse(JSON.stringify(this.productIcons));
+        this.productIcons11[this.lastIndex] = this.productIcons2[this.lastIndex];
+      } else if(index !== this.lastIndex && !this.productFlag) {
+        this.productIcons11 = [];
+        this.productIcons11 = JSON.parse(JSON.stringify(this.productIcons));
+        this.productIcons11[this.lastIndex] = this.productIcons2[this.lastIndex];
+        console.log('leave....clicked');
       }
     },
     // 点击不同系列图标切换不同系列的图片
     changeSeries: function(index) {
       this.productFlag = false;
       if(index !== this.lastIndex) {
-        this.productIcons[this.lastIndex] = this.templateIcon; // 上一个高亮的图标还原回去
-        this.productIcons[index] = this.productIcons2[index]; // 当前被点击图标切换成高亮图标
-
-        this.templateIcon = this.productIcons11[index]; // 保存新的被替代图标
+        this.productIcons11 = [];
+        this.productIcons11 = JSON.parse(JSON.stringify(this.productIcons));
+        this.productIcons11[index] = this.productIcons2[index];
 
         this.productImgs = [];
         this.replaceProductImgs = [];

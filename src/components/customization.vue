@@ -43,23 +43,14 @@ export default {
       custommizationImg: '',
       hallway_img: '',
       hallway_name: '',
-      hallway_desc: 'hello world',
+      hallway_desc: '',
       hallway_introduce: '',
 
-      hallway_img2: '',
-      hallway_name2: '',
-      hallway_desc2: 'nice to meet you',
-      hallway_introduce2: '',
-
-      series_two_detail: '',
       seriesData: [],
       seriesOne: [],
-      seriesTwo: [],
       seriesInfo: [],
       seriesBG: '',
-      seriesBG2: '',
       imgIndex: 0,
-      imgIndex2: 1
     }
   },
   mounted: function() {
@@ -81,18 +72,12 @@ export default {
         this.seriesData = response.body.Sub[467].File;
         this.custommizationImg = response.body.Sub[476].File[0].ImgUrl;
         this.seriesOne = response.body.Sub[479].Sub[480].File;
-        this.seriesTwo = response.body.Sub[479].Sub[481].File;
 
         this.seriesInfo = response.body.Sub[467].File;
         this.seriesBG = this.seriesInfo[0].ImgUrl;
         this.hallway_img = this.seriesOne[0].ImgUrl;
         this.hallway_introduce = this.seriesOne[0].P2;
         this.hallway_name = this.seriesOne[0].Name;
-
-        this.seriesBG2 = this.seriesInfo[1].ImgUrl;
-        this.hallway_img2 = this.seriesOne[1].ImgUrl;
-        this.hallway_introduce2 = this.seriesOne[1].P2;
-        this.hallway_name2 = this.seriesOne[1].Name;
       })
       .catch(function(error) {
         console.log(error);
@@ -119,24 +104,6 @@ export default {
       this.hallway_introduce = this.seriesOne[this.imgIndex].P2;
       this.hallway_name = this.seriesOne[this.imgIndex].Name;
     },
-    prePic: function() {
-      this.imgIndex2--;
-      if(this.imgIndex2 < 0) {
-        this.imgIndex2 = this.seriesOne.length-1;
-      }
-      this.hallway_img2 = this.seriesOne[this.imgIndex2].ImgUrl;
-      this.hallway_introduce2 = this.seriesOne[this.imgIndex2].P2;
-      this.hallway_name2 = this.seriesOne[this.imgIndex2].Name;
-    },
-    nextPic: function() {
-      this.imgIndex2++;
-      if(this.imgIndex2 > (this.seriesOne.length-1)) {
-        this.imgIndex2 = 0;
-      }
-      this.hallway_img2 = this.seriesOne[this.imgIndex2].ImgUrl;
-      this.hallway_introduce2 = this.seriesOne[this.imgIndex2].P2;
-      this.hallway_name2 = this.seriesOne[this.imgIndex2].Name;
-    }
   }
 }
 </script>
